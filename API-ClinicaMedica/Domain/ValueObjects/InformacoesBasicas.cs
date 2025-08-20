@@ -2,12 +2,12 @@
 
 public class InformacoesBasicas
 {
-    private string Nome { get; set; }
-    private string Email { get; set; }
-    private string Telefone { get; set; }
-    private DateTime DataNascimento { get; set; }
-    private string Cpf { get; set; }
-    private string Rg { get; set; }
+    public string Nome { get; private set; }
+    public string Email { get; private set; }
+    public string Telefone { get; private set; }
+    public DateTime DataNascimento { get; private set; }
+    public string Cpf { get; private set; }
+    public string Rg { get; private set; }
     
     
     
