@@ -6,7 +6,7 @@ namespace API_ClinicaMedica.Domain.Entities;
 public class Usuario
 {
     [Key]
-    public int Id { get; }
+    public int IdUsuario { get; }
     public string Login { get; }
     public string Senha { get; }
     
