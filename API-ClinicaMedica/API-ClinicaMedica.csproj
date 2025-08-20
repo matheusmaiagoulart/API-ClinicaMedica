@@ -19,8 +19,7 @@
 
   <ItemGroup>
     <Folder Include="Controllers\" />
-    <Folder Include="Data\" />
-    <Folder Include="Domain\" />
+    <Folder Include="Domain\Entities\" />
     <Folder Include="Infra\" />
     <Folder Include="Services\" />
   </ItemGroup>
