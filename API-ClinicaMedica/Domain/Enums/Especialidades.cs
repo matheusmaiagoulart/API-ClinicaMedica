@@ -9,6 +9,6 @@ public enum Especialidades
     GINECOLOGIA,
     NEUROLOGIA,
     PSIQUIATRIA,
-    OFTALMOLOGIA,
+    OFTALMOLOGIA
     
 }
