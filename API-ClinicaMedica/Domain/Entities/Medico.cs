@@ -1,11 +1,13 @@
-﻿using API_ClinicaMedica.Domain.Enums;
+﻿using System.ComponentModel.DataAnnotations;
+using API_ClinicaMedica.Domain.Enums;
 using API_ClinicaMedica.Domain.ValueObjects;
 
 namespace API_ClinicaMedica.Domain.Entities;
 
 public class Medico
 {
-    public int Id { get; }
+    [Key]
+    public int IdMedico { get; }
     public Usuario Usuario { get; set; }
     public Especialidades Especialidade { get; private set;}
     
