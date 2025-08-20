@@ -1,0 +1,35 @@
+﻿# Build
+bin/
+obj/
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Visual Studio Code
+.vscode/
+
+# Rider
+.idea/
+*.sln.iml
+
+# Logs
+*.log
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Configuration
+appsettings.Development.json
+appsettings.Production.json
+appsettings.Staging.json
+
+# Others
+*.db
+*.sqlite
+
+/Migrations
+/appsettings.json
