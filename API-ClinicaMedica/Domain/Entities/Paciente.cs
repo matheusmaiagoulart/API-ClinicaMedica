@@ -8,7 +8,7 @@ namespace API_ClinicaMedica.Domain.Entities;
 public class Paciente
 {
     [Key]
-    public int Id { get; set; }
+    public int IdPaciente { get; set; }
     public Usuario Usuario { get; set; }
     public bool Pcd { get; private set; }
     public bool Ativo { get; private set; }
