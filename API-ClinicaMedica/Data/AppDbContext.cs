@@ -57,7 +57,18 @@ public class AppDbContext : DbContext
             
             e.Property(p => p.Ativo).IsRequired();
             e.Property(i => i.Pcd).HasColumnName("Pcd").IsRequired();
-            
+            e.OwnsMany(p => p.MedicamentosControlados, mc =>
+            {
+                mc.ToTable("MedicamentoControlado");
+                mc.WithOwner().HasForeignKey("PacienteId"); // Chave estrangeira para Paciente
+                mc.Property<int>("Id"); // Shadow property para PK
+                mc.HasKey("Id");
+                mc.Property(m => m.Nome).HasColumnName("Nome").IsRequired().HasMaxLength(100);
+                mc.Property(m => m.Dosagem).HasColumnName("Dosagem").HasMaxLength(50);
+                mc.Property(m => m.Frequencia).HasColumnName("Frequencia").HasMaxLength(50);
+                mc.Property(m => m.Observacoes).HasColumnName("Observacoes").HasMaxLength(200);
+            });
+
         });
         
         
