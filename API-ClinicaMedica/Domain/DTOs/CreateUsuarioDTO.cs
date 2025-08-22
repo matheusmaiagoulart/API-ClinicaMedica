@@ -1,12 +1,15 @@
-﻿using API_ClinicaMedica.Domain.ValueObjects;
+﻿using System.ComponentModel.DataAnnotations;
+using API_ClinicaMedica.Domain.DTOs.ValueObjectsDTOs;
+
 
 namespace API_ClinicaMedica.Domain.DTOs;
 
 public class CreateUsuarioDTO
 {
-    public string Login { get; set; }
+    [Required, EmailAddress] 
+    public string Email { get; set; }
+    [Required] 
     public string Senha { get; set; }
-    
-    public InformacoesBasicas InformacoesBasicas { get; set; }
-    public Endereco Endereco { get; set; }
+    public InformacoesBasicasDTO InformacoesBasicas { get; set; }
+    public EnderecoDTO Endereco { get; set; }
 }
