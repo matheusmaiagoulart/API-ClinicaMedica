@@ -50,4 +50,16 @@ public class UsuarioRepository : Repository<Usuario>, IUsuarioRepository
         return true;
     }
     
+    public async Task<bool> isCpfAvailable(string cpf)
+    {
+
+        var isAvailable = await _context.Usuarios.AnyAsync(u => u.InformacoesBasicas.Cpf == cpf);
+        if (isAvailable)
+        {
+            return false;
+        }
+
+        return true;
+    }
+    
 }

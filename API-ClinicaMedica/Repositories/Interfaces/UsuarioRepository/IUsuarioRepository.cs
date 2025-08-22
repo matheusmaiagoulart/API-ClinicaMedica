@@ -11,4 +11,6 @@ public interface IUsuarioRepository : IRepository<Usuario>
     Task<bool> isEmailAvailable(string login);
     
     Task<bool> isTelefoneAvailable(string telefone);
+    
+    Task<bool> isCpfAvailable(string cpf);
 }
