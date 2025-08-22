@@ -45,15 +45,5 @@ public class Repository<T> : IRepository<T> where T : class
         return Task.CompletedTask;
     }
 
-    public async Task<bool> isCpfAvailable(string cpf)
-    {
-
-        var isAvailable = await _context.Usuarios.AnyAsync(u => u.InformacoesBasicas.Cpf == cpf);
-        if (isAvailable)
-        {
-            return false;
-        }
-
-        return true;
-    }
+    
 }
