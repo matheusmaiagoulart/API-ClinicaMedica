@@ -18,15 +18,13 @@ public class AppDbContext : DbContext
         modelBuilder.Entity<Usuario>(e =>
             {
                 e.HasKey(u => u.IdUsuario);
-                e.Property(u => u.Login).IsRequired().HasMaxLength(100);
+                e.Property(u => u.Email).IsRequired().HasMaxLength(100);
+                e.HasIndex(i => i.Email).IsUnique();
                 e.OwnsOne(u => u.InformacoesBasicas, info =>
                 {
                     info.Property(i => i.Telefone).HasColumnName("Telefone").IsRequired().IsRequired().HasMaxLength(11);
                     info.Property(i => i.DataNascimento).HasColumnName("DataNascimento").IsRequired();
                     info.Property(i => i.Nome).HasColumnName("Nome").IsRequired().HasMaxLength(100);
-
-                    info.Property(i => i.Email).HasColumnName("Email").IsUnicode().IsRequired().HasMaxLength(100);
-                    info.HasIndex(i => i.Email).IsUnique();
 
                     info.Property(i => i.Cpf).HasColumnName("Cpf").IsRequired().HasMaxLength(11);
                     info.HasIndex(i => i.Cpf).IsUnique();
