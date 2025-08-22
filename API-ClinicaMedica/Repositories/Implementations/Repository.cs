@@ -35,7 +35,7 @@ public class Repository<T> : IRepository<T> where T : class
 
     public Task UpdateAsync(T entity)
     { 
-        _context.Set<T>().Update(entity);
+         _context.Set<T>().Update(entity);
         return Task.CompletedTask;
     }
 
@@ -45,8 +45,15 @@ public class Repository<T> : IRepository<T> where T : class
         return Task.CompletedTask;
     }
 
-    public async Task SaveChangesAsync()
+    public async Task<bool> isCpfAvailable(string cpf)
     {
-         await _context.SaveChangesAsync();
+
+        var isAvailable = await _context.Usuarios.AnyAsync(u => u.InformacoesBasicas.Cpf == cpf);
+        if (isAvailable)
+        {
+            return false;
+        }
+
+        return true;
     }
 }
