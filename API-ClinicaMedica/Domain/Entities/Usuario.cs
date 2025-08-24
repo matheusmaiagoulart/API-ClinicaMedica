@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using API_ClinicaMedica.Domain.DTOs.ValueObjectsDTOs;
 using API_ClinicaMedica.Domain.ValueObjects;
 
 namespace API_ClinicaMedica.Domain.Entities;
@@ -24,6 +23,16 @@ public class Usuario
         InformacoesBasicas = infos;
         this.Email = email;
         this.Senha = senha;
+        this.Endereco = endereco;
+    }
+
+    public void AtualizaInformacaoBasica(InformacoesBasicas informacoesBasicas)
+    {
+        this.InformacoesBasicas = informacoesBasicas;
+    }
+    
+    public void AtualizaEndereco(Endereco endereco)
+    {
         this.Endereco = endereco;
     }
 
