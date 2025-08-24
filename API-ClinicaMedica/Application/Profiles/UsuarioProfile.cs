@@ -1,4 +1,5 @@
-﻿using API_ClinicaMedica.Domain.DTOs;
+﻿using API_ClinicaMedica.Application.DTOs.UpdateUsuarioDTOs;
+using API_ClinicaMedica.Application.DTOs.UsuarioDTOs;
 using API_ClinicaMedica.Domain.Entities;
 using API_ClinicaMedica.Domain.ValueObjects;
 using AutoMapper;
@@ -31,7 +32,18 @@ public class UsuarioProfile : Profile
                 ))
             );
 
+        CreateMap<UpdateUsuarioDTO, Usuario>()
+            .ForAllMembers(opt => opt.Condition((src, dest, srcMember) =>
+                srcMember != null ));
+
+        CreateMap<CreateUsuarioDTO, UniqueFieldsValidationDTO>();
+        
+        CreateMap<UpdateUsuarioDTO, UniqueFieldsValidationDTO>();
+        
         CreateMap<Usuario, UsuarioDTO>();
+        CreateMap<Usuario, UniqueFieldsValidationDTO>();
+        
+        
 
 
     }
