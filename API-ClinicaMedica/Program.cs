@@ -1,19 +1,41 @@
-using API_ClinicaMedica.Data;
+using System.Text.Json.Serialization;
+using API_ClinicaMedica.Application.Profiles;
+using API_ClinicaMedica.Application.Services.UsuarioService.Implementations;
+using API_ClinicaMedica.Application.Validations.UsuarioValidationInformacoesBasicas.Implementation;
 using Microsoft.EntityFrameworkCore;
+using API_ClinicaMedica.Application.Services.UsuarioService.Interfaces;
+using API_ClinicaMedica.Application.Validations.UsuarioValidationInformacoesBasicas.Interface;
+using API_ClinicaMedica.Infra.Data;
+using API_ClinicaMedica.Infra.Repositories.Implementations;
+using API_ClinicaMedica.Infra.Repositories.Interfaces;
+using API_ClinicaMedica.Infra.Repositories.UnitOfWork;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
 
-builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+//Trasnforma o numero do enum em string no json e reconhece na hora de desserializar
+builder.Services.AddControllers()
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+    });
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+builder.Services.AddScoped<IUsuarioService, UsuarioService>();
+builder.Services.AddAutoMapper(typeof(UsuarioProfile).Assembly);
+builder.Services.AddScoped<IValidacaoInformacoesBasicas, ValidacaoEmail>();
+builder.Services.AddScoped<IValidacaoInformacoesBasicas, ValidacaoCpf>();
+builder.Services.AddScoped<IValidacaoInformacoesBasicas, ValidacaoTelefone>();
+
 builder.Services.AddDbContext<AppDbContext>(option =>
     option.UseSqlServer(builder.Configuration.GetConnectionString("ClinicaMedicaContext")));
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
