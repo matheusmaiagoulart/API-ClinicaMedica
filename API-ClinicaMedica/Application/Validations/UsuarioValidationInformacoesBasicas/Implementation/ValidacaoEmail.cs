@@ -1,7 +1,9 @@
-﻿using API_ClinicaMedica.Application.Validations.Interface.UsuarioValidationInformacoesBasicas;
-using API_ClinicaMedica.Domain.DTOs;
+﻿
+using System.Xml;
+using API_ClinicaMedica.Application.DTOs.UsuarioDTOs;
+using API_ClinicaMedica.Application.Validations.UsuarioValidationInformacoesBasicas.Interface;
 using API_ClinicaMedica.Infra.Exceptions;
-using API_ClinicaMedica.Repositories.UnitOfWork;
+using API_ClinicaMedica.Infra.Repositories.UnitOfWork;
 
 namespace API_ClinicaMedica.Application.Validations.UsuarioValidationInformacoesBasicas.Implementation;
 
@@ -12,21 +14,32 @@ public class ValidacaoEmail : IValidacaoInformacoesBasicas
     {
         _unitOfWork = unitOfWork;
     }
-    
-    public void validacao(CreateUsuarioDTO dto)
+
+    public async Task validacao(UniqueFieldsValidationDTO dto)
     {
-        
-        //Validação da string do email de entrada    
-        if (string.IsNullOrEmpty(dto.Email) || !dto.Email.Contains("@"))
-            throw new ArgumentException("Email inválido.");
-        
-        
-        //Validação de disponibilidade do email no banco de dados
-        
-        var isEmailAvailable=  _unitOfWork.Usuarios.isEmailAvailable(dto.Email);
-       
-        if (isEmailAvailable.Result == false)
-            throw new EmailException(dto.Email);
-        
+
+        var user = await _unitOfWork.Usuarios.GetUserById(dto.IdUsuario);
+        if (user == null)
+        {
+            throw new UsuarioNaoEncontradoException("Usuário não localizado!");
+        }
+
+        if (user.Email != dto.Email)
+        {
+            //Validação da string do email de entrada    
+            if (string.IsNullOrEmpty(dto.Email) || !dto.Email.Contains("@"))
+                throw new ArgumentException("Email inválido.");
+
+
+            //Validação de disponibilidade do email no banco de dados
+
+            var isEmailAvailable = await _unitOfWork.Usuarios.isEmailAvailable(dto.Email);
+
+            if (isEmailAvailable == false)
+                throw new EmailException(dto.Email);
+
+        }
     }
+
+
 }

@@ -1,7 +1,8 @@
-﻿using API_ClinicaMedica.Application.Validations.Interface.UsuarioValidationInformacoesBasicas;
-using API_ClinicaMedica.Domain.DTOs;
+﻿
+using API_ClinicaMedica.Application.DTOs.UsuarioDTOs;
+using API_ClinicaMedica.Application.Validations.UsuarioValidationInformacoesBasicas.Interface;
 using API_ClinicaMedica.Infra.Exceptions;
-using API_ClinicaMedica.Repositories.UnitOfWork;
+using API_ClinicaMedica.Infra.Repositories.UnitOfWork;
 
 namespace API_ClinicaMedica.Application.Validations.UsuarioValidationInformacoesBasicas.Implementation;
 
@@ -12,15 +13,27 @@ public class ValidacaoCpf : IValidacaoInformacoesBasicas
     {
         _unitOfWork = unitOfWork;
     }
-    
-    public void validacao(CreateUsuarioDTO dto)
+
+    public async Task validacao(UniqueFieldsValidationDTO dto)
     {
-        //Validação da string do CPF da entrada
-        var cpf = dto.InformacoesBasicas.Cpf;
+        var user = await _unitOfWork.Usuarios.GetUserById(dto.IdUsuario);
+        if (user == null)
+        {
+            throw new UsuarioNaoEncontradoException("Usuário não localizado!");
+        }
+        if (user.InformacoesBasicas.Cpf != dto.InformacoesBasicas.Cpf)
+        {
+            //Validação da string do CPF da entrada
+            var cpf = dto.InformacoesBasicas.Cpf;
         
-        var cpfIsAvailable = _unitOfWork.Usuarios.isCpfAvailable(cpf);
+            var cpfIsAvailable = await _unitOfWork.Usuarios.isCpfAvailable(cpf);
+            
+                if(cpfIsAvailable == false)
+                    throw new CpfException($"{dto.InformacoesBasicas.Cpf}");
+        }
+    
+
         
-        if(cpfIsAvailable.Result == false)
-            throw new CpfException($"{dto.InformacoesBasicas.Cpf}");
+        
     }
 }
