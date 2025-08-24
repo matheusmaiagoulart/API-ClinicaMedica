@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using API_ClinicaMedica.Domain.Enums;
 
-namespace API_ClinicaMedica.Domain.DTOs.ValueObjectsDTOs;
+namespace API_ClinicaMedica.Application.DTOs.ValueObjectsDTOs.EnderecoDTOs;
 
 public class EnderecoDTO
 {
