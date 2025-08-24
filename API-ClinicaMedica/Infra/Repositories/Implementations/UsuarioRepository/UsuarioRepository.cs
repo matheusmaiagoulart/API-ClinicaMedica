@@ -1,8 +1,9 @@
-﻿using API_ClinicaMedica.Data;
-using API_ClinicaMedica.Domain.DTOs;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using API_ClinicaMedica.Domain.Entities;
-namespace API_ClinicaMedica.Repositories.Implementations.UsuarioRepository;
+using API_ClinicaMedica.Infra.Data;
+using API_ClinicaMedica.Infra.Repositories.Interfaces.UsuarioRepository;
+
+namespace API_ClinicaMedica.Infra.Repositories.Implementations.UsuarioRepository;
 public class UsuarioRepository : Repository<Usuario>, IUsuarioRepository
 {
    
@@ -31,35 +32,24 @@ public class UsuarioRepository : Repository<Usuario>, IUsuarioRepository
 
     public async Task<bool> isEmailAvailable(string email)
     {
-        bool isValid = await _context.Usuarios
+        return !await _context.Usuarios
             .AnyAsync(u => u.Email == email);
-        if (isValid)
-        {
-            return false;
-        }
-        return true;
+        
+        
     }
     public async Task<bool> isTelefoneAvailable(string telefone)
     {
-        bool isValid = await _context.Usuarios
+        return  !await _context.Usuarios
             .AnyAsync(u => u.InformacoesBasicas.Telefone == telefone);
-        if (isValid)
-        {
-            return false;
-        }
-        return true;
+        
     }
     
     public async Task<bool> isCpfAvailable(string cpf)
     {
 
-        var isAvailable = await _context.Usuarios.AnyAsync(u => u.InformacoesBasicas.Cpf == cpf);
-        if (isAvailable)
-        {
-            return false;
-        }
-
-        return true;
+        return !await _context.Usuarios.AnyAsync(u => u.InformacoesBasicas.Cpf == cpf);
+        
     }
+    
     
 }
