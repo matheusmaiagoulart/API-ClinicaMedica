@@ -9,6 +9,7 @@ using API_ClinicaMedica.Infra.Data;
 using API_ClinicaMedica.Infra.Repositories.Implementations;
 using API_ClinicaMedica.Infra.Repositories.Interfaces;
 using API_ClinicaMedica.Infra.Repositories.UnitOfWork;
+using API_ClinicaMedica.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -42,6 +43,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseMiddleware<MiddlewareApplication.ErrorHandleMiddleware>(); // Adiciona o middleware
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
