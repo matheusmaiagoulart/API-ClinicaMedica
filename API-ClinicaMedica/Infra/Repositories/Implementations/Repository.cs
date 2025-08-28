@@ -1,4 +1,4 @@
-﻿using API_ClinicaMedica.Infra.Data;
+﻿using API_ClinicaMedica.Infra.Data.DbContext;
 using API_ClinicaMedica.Infra.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 

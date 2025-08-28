@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using API_ClinicaMedica.Domain.Entities;
-using API_ClinicaMedica.Infra.Data;
 using API_ClinicaMedica.Infra.Repositories.Interfaces.UsuarioRepository;
+using API_ClinicaMedica.Infra.Data.DbContext;
 
 namespace API_ClinicaMedica.Infra.Repositories.Implementations.UsuarioRepository;
 public class UsuarioRepository : Repository<Usuario>, IUsuarioRepository
