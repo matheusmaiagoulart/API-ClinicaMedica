@@ -36,4 +36,9 @@ public class Usuario
         this.Endereco = endereco;
     }
 
+    public void HashSenha(string senha)
+    {
+        var senhaHashed = BCryptHelper.HashPassword(senha, BCryptHelper.GenerateSalt());
+        this.Senha = senhaHashed;
+    }
 }
