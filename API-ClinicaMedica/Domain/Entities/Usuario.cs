@@ -1,8 +1,10 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using API_ClinicaMedica.Domain.ValueObjects;
+using DevOne.Security.Cryptography.BCrypt;
 
 namespace API_ClinicaMedica.Domain.Entities;
-
+[Table("Usuarios")]
 public class Usuario
 {
     [Key]
