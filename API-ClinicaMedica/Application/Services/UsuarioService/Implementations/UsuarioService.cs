@@ -78,6 +78,10 @@ public class UsuarioService : IUsuarioService
     public async Task<Result<UsuarioDTO>> UpdateUser(int id, UpdateUsuarioDTO dto)
     {
         var userExistente = await _unitOfWork.Usuarios.GetUserById(id);
+        if (userExistente == null)
+        {
+            return Result<UsuarioDTO>.Failure(UsuariosErrosResults.UsuarioNaoEncontrado());
+        }
         _mapper.Map(dto, userExistente);
         
         var validation = _mapper.Map<UniqueFieldsValidationDTO>(userExistente);
