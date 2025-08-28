@@ -1,10 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using API_ClinicaMedica.Domain.ValueObjects;
 using Microsoft.EntityFrameworkCore;
 
 
 namespace API_ClinicaMedica.Domain.Entities;
-
+[Table("Pacientes")]
 public class Paciente
 {
     [Key]
