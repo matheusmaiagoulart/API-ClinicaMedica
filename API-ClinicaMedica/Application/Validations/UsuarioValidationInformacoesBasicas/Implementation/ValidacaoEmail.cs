@@ -1,6 +1,8 @@
 ﻿
 using System.Xml;
 using API_ClinicaMedica.Application.DTOs.UsuarioDTOs;
+using API_ClinicaMedica.Application.Results;
+using API_ClinicaMedica.Application.Results.UsuariosResults;
 using API_ClinicaMedica.Application.Validations.UsuarioValidationInformacoesBasicas.Interface;
 using API_ClinicaMedica.Infra.Exceptions;
 using API_ClinicaMedica.Infra.Repositories.UnitOfWork;
@@ -15,30 +17,36 @@ public class ValidacaoEmail : IValidacaoInformacoesBasicas
         _unitOfWork = unitOfWork;
     }
 
-    public async Task validacao(UniqueFieldsValidationDTO dto)
+    public async Task<Result> validacao(UniqueFieldsValidationDTO dto)
     {
-
-        var user = await _unitOfWork.Usuarios.GetUserById(dto.IdUsuario);
-        if (user == null)
+        var email = dto.Email;
+        if (dto.IdUsuario != null && dto.IdUsuario > 0)
         {
-            throw new UsuarioNaoEncontradoException("Usuário não localizado!");
+            //Validação com ID valido, cai quando for atualização de algum usuário
+            var userObj = await _unitOfWork.Usuarios.GetUserById(dto.IdUsuario);
+            if (userObj  == null)
+            {
+                return Result.Failure(UsuariosErrosResults.UsuarioNaoEncontrado());
+            }
+            if (userObj.Email != dto.Email)
+            {
+                
+                //Validação de disponibilidade do email no banco de dados
+                var isEmailAvailable = await _unitOfWork.Usuarios.isEmailAvailable(dto.Email);
+                if (isEmailAvailable == false)
+                    return Result.Failure(UsuariosErrosResults.EmailJaCadastrado(dto.Email));
+            }
+            return Result.Success();
         }
-
-        if (user.Email != dto.Email)
-        {
-            //Validação da string do email de entrada    
-            if (string.IsNullOrEmpty(dto.Email) || !dto.Email.Contains("@"))
-                throw new ArgumentException("Email inválido.");
+        //Validação pra usuários novos, sem ID
 
 
-            //Validação de disponibilidade do email no banco de dados
+            var EmailAvailable = await _unitOfWork.Usuarios.isEmailAvailable(dto.Email);
 
-            var isEmailAvailable = await _unitOfWork.Usuarios.isEmailAvailable(dto.Email);
+            if (EmailAvailable == false)
+                return Result.Failure(UsuariosErrosResults.EmailJaCadastrado(dto.Email));
 
-            if (isEmailAvailable == false)
-                throw new EmailException(dto.Email);
-
-        }
+            return Result.Success();
     }
 
 
