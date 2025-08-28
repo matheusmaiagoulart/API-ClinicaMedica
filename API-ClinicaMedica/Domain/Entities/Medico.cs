@@ -1,9 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using API_ClinicaMedica.Domain.Enums;
 using API_ClinicaMedica.Domain.ValueObjects;
 
 namespace API_ClinicaMedica.Domain.Entities;
 
+[Table("Medicos")]
 public class Medico
 {
     [Key]
