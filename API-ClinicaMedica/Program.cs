@@ -7,7 +7,6 @@ using API_ClinicaMedica.Application.Validations.UsuarioValidationInformacoesBasi
 using Microsoft.EntityFrameworkCore;
 using API_ClinicaMedica.Application.Services.UsuarioService.Interfaces;
 using API_ClinicaMedica.Application.Validations.UsuarioValidationInformacoesBasicas.Interface;
-using API_ClinicaMedica.Infra.Data;
 using API_ClinicaMedica.Infra.Repositories.Implementations;
 using API_ClinicaMedica.Infra.Repositories.Interfaces;
 using API_ClinicaMedica.Infra.Repositories.UnitOfWork;
