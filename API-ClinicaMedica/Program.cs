@@ -1,4 +1,6 @@
 using System.Text.Json.Serialization;
+using API_ClinicaMedica.Application.DTOs.UsuarioDTOs;
+using API_ClinicaMedica.Application.FluentValidation;
 using API_ClinicaMedica.Application.Profiles;
 using API_ClinicaMedica.Application.Services.UsuarioService.Implementations;
 using API_ClinicaMedica.Application.Validations.UsuarioValidationInformacoesBasicas.Implementation;
@@ -9,7 +11,9 @@ using API_ClinicaMedica.Infra.Data;
 using API_ClinicaMedica.Infra.Repositories.Implementations;
 using API_ClinicaMedica.Infra.Repositories.Interfaces;
 using API_ClinicaMedica.Infra.Repositories.UnitOfWork;
+using API_ClinicaMedica.Infra.Data.DbContext;
 using API_ClinicaMedica.Middleware;
+using FluentValidation;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -30,6 +34,9 @@ builder.Services.AddAutoMapper(typeof(UsuarioProfile).Assembly);
 builder.Services.AddScoped<IValidacaoInformacoesBasicas, ValidacaoEmail>();
 builder.Services.AddScoped<IValidacaoInformacoesBasicas, ValidacaoCpf>();
 builder.Services.AddScoped<IValidacaoInformacoesBasicas, ValidacaoTelefone>();
+
+//Adição dos validadores FluentValidation
+builder.Services.AddScoped<IValidator<CreateUsuarioDTO>, UsuarioDTOValidator>();
 
 builder.Services.AddDbContext<AppDbContext>(option =>
     option.UseSqlServer(builder.Configuration.GetConnectionString("ClinicaMedicaContext")));
