@@ -1,5 +1,4 @@
-﻿using API_ClinicaMedica.Application.DTOs.UpdateUsuarioDTOs;
-using API_ClinicaMedica.Application.DTOs.UsuarioDTOs;
+﻿using API_ClinicaMedica.Application.DTOs.UsuarioDTOs;
 using API_ClinicaMedica.Application.Results;
 using API_ClinicaMedica.Domain.Entities;
 
