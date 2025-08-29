@@ -20,15 +20,19 @@ public class Paciente
         
     }
     
-    public Paciente(Usuario usuario, bool ativo, bool pcd, List<MedicamentoControlado> medicamentosControlados)
+    public Paciente(int IdPaciente, Usuario usuario, bool ativo, bool pcd, List<MedicamentoControlado> medicamentosControlados)
     {
+        this.IdPaciente = IdPaciente;
         Usuario = usuario;
         Pcd = pcd;
-        Ativo = true;
+        Ativo = ativo;
         this.MedicamentosControlados = medicamentosControlados ?? new List<MedicamentoControlado>();
     }
-    
-    
+
+    public void setAtivoTrue()
+    {
+        Ativo = true;
+    }
     public void Desativar()
     {
         Ativo = false;
