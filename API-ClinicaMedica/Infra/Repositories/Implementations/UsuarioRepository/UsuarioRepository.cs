@@ -1,7 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
-using API_ClinicaMedica.Domain.Entities;
-using API_ClinicaMedica.Infra.Repositories.Interfaces.UsuarioRepository;
+﻿using API_ClinicaMedica.Domain.Entities;
 using API_ClinicaMedica.Infra.Data.DbContext;
+using API_ClinicaMedica.Infra.Repositories.Interfaces.UsuarioRepository;
+using Microsoft.EntityFrameworkCore;
 
 namespace API_ClinicaMedica.Infra.Repositories.Implementations.UsuarioRepository;
 public class UsuarioRepository : Repository<Usuario>, IUsuarioRepository
@@ -46,10 +46,15 @@ public class UsuarioRepository : Repository<Usuario>, IUsuarioRepository
     
     public async Task<bool> isCpfAvailable(string cpf)
     {
-
-        return !await _context.Usuarios.AnyAsync(u => u.InformacoesBasicas.Cpf == cpf);
-        
+        return !await _context.Usuarios
+            .AnyAsync(u => u.InformacoesBasicas.Cpf == cpf);
     }
     
+    public async Task<bool> existsById(int id)
+    {
+        return await _context.Usuarios
+            .AnyAsync(u => u.IdUsuario == id);
+
+    }
     
 }

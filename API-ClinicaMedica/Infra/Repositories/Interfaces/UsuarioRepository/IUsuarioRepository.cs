@@ -14,4 +14,6 @@ public interface IUsuarioRepository : IRepository<Usuario>
     Task<bool> isTelefoneAvailable(string telefone);
     
     Task<bool> isCpfAvailable(string cpf);
+    
+    Task<bool> existsById(int id);
 }
