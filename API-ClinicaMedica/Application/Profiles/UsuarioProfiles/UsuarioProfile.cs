@@ -1,10 +1,9 @@
-﻿using API_ClinicaMedica.Application.DTOs.UpdateUsuarioDTOs;
-using API_ClinicaMedica.Application.DTOs.UsuarioDTOs;
+﻿using API_ClinicaMedica.Application.DTOs.UsuarioDTOs;
 using API_ClinicaMedica.Domain.Entities;
 using API_ClinicaMedica.Domain.ValueObjects;
 using AutoMapper;
 
-namespace API_ClinicaMedica.Application.Profiles;
+namespace API_ClinicaMedica.Application.Profiles.UsuarioProfiles;
 
 public class UsuarioProfile : Profile
 {

@@ -1,8 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
-using API_ClinicaMedica.Application.DTOs.ValueObjectsDTOs.EnderecoDTOs;
+﻿using API_ClinicaMedica.Application.DTOs.ValueObjectsDTOs.EnderecoDTOs;
 using API_ClinicaMedica.Application.DTOs.ValueObjectsDTOs.InformacoesBasicasDTOs;
 
-namespace API_ClinicaMedica.Application.DTOs.UpdateUsuarioDTOs;
+namespace API_ClinicaMedica.Application.DTOs.UsuarioDTOs;
 
 public class UpdateUsuarioDTO
 {

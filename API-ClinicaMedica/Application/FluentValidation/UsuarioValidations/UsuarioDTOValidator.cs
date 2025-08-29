@@ -1,8 +1,7 @@
 ﻿using API_ClinicaMedica.Application.DTOs.UsuarioDTOs;
-using API_ClinicaMedica.Domain.Enums;
 using FluentValidation;
 
-namespace API_ClinicaMedica.Application.FluentValidation;
+namespace API_ClinicaMedica.Application.FluentValidation.UsuarioValidations;
 
 public class UsuarioDTOValidator : AbstractValidator<CreateUsuarioDTO>
 {
