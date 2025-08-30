@@ -1,5 +1,6 @@
 ﻿using API_ClinicaMedica.Application.DTOs.PacienteDTOs;
 using API_ClinicaMedica.Application.Results;
+using API_ClinicaMedica.Application.Results.GenericsResults;
 using API_ClinicaMedica.Application.Results.PacientesResults;
 using API_ClinicaMedica.Application.Results.UsuariosResults;
 using API_ClinicaMedica.Application.Services.PacienteService.Interfaces;

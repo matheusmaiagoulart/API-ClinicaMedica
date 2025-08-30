@@ -2,6 +2,7 @@
 using System.Xml;
 using API_ClinicaMedica.Application.DTOs.UsuarioDTOs;
 using API_ClinicaMedica.Application.Results;
+using API_ClinicaMedica.Application.Results.GenericsResults;
 using API_ClinicaMedica.Application.Results.UsuariosResults;
 using API_ClinicaMedica.Application.Validations.UsuarioValidationInformacoesBasicas.Interface;
 using API_ClinicaMedica.Infra.Exceptions;

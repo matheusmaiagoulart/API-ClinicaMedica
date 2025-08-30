@@ -1,4 +1,6 @@
-﻿namespace API_ClinicaMedica.Application.Results.PacientesResults;
+﻿using API_ClinicaMedica.Application.Results.GenericsResults;
+
+namespace API_ClinicaMedica.Application.Results.PacientesResults;
 
 public class PacientesErrorsResult
 {
