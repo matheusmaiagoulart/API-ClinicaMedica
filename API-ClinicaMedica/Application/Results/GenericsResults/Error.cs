@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
-
-namespace API_ClinicaMedica.Application.Results;
+﻿namespace API_ClinicaMedica.Application.Results.GenericsResults;
 
 
     public record Error(string Id, string mensagem, int StatusCode);

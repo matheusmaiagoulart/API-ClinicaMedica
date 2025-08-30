@@ -1,4 +1,4 @@
-﻿namespace API_ClinicaMedica.Application.Results;
+﻿namespace API_ClinicaMedica.Application.Results.GenericsResults;
 
 public record Result
 {
