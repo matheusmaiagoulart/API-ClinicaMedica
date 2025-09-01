@@ -1,7 +1,7 @@
 ﻿using API_ClinicaMedica.Domain.Entities;
 using API_ClinicaMedica.Domain.Enums;
 
-namespace API_ClinicaMedica.Infra.Repositories.Interfaces.MedicosRepository;
+namespace API_ClinicaMedica.Infra.Interfaces;
 
 public interface IMedicoRepository : IRepository<Medico>
 {

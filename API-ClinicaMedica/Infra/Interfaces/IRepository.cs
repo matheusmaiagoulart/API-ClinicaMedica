@@ -1,4 +1,4 @@
-﻿namespace API_ClinicaMedica.Infra.Repositories.Interfaces;
+﻿namespace API_ClinicaMedica.Infra.Interfaces;
 
 public interface IRepository<T> where T : class
 {

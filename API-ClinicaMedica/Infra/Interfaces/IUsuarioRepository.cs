@@ -1,7 +1,7 @@
 ﻿
 using API_ClinicaMedica.Domain.Entities;
 
-namespace API_ClinicaMedica.Infra.Repositories.Interfaces.UsuarioRepository;
+namespace API_ClinicaMedica.Infra.Interfaces;
 
 public interface IUsuarioRepository : IRepository<Usuario>
 {
