@@ -1,13 +1,7 @@
 ﻿using API_ClinicaMedica.Infra.Data.DbContext;
-using API_ClinicaMedica.Infra.Repositories.Implementations.MedicoRepository;
-using API_ClinicaMedica.Infra.Repositories.Implementations.PacienteRepository;
-using API_ClinicaMedica.Infra.Repositories.Implementations.UsuarioRepository;
-using API_ClinicaMedica.Infra.Repositories.Interfaces.MedicosRepository;
-using API_ClinicaMedica.Infra.Repositories.Interfaces.PacienteRepository;
-using API_ClinicaMedica.Infra.Repositories.Interfaces.UsuarioRepository;
+using API_ClinicaMedica.Infra.Interfaces;
 
-
-namespace API_ClinicaMedica.Infra.Repositories.UnitOfWork;
+namespace API_ClinicaMedica.Infra.Repositories;
 
 public class UnitOfWork : IUnitOfWork
 {

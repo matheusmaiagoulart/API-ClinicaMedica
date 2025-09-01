@@ -1,8 +1,8 @@
 ﻿using API_ClinicaMedica.Infra.Data.DbContext;
-using API_ClinicaMedica.Infra.Repositories.Interfaces;
+using API_ClinicaMedica.Infra.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
-namespace API_ClinicaMedica.Infra.Repositories.Implementations;
+namespace API_ClinicaMedica.Infra.Repositories;
 
 public class Repository<T> : IRepository<T> where T : class
 {

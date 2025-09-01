@@ -1,9 +1,9 @@
 ﻿using API_ClinicaMedica.Domain.Entities;
 using API_ClinicaMedica.Infra.Data.DbContext;
-using API_ClinicaMedica.Infra.Repositories.Interfaces.UsuarioRepository;
+using API_ClinicaMedica.Infra.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
-namespace API_ClinicaMedica.Infra.Repositories.Implementations.UsuarioRepository;
+namespace API_ClinicaMedica.Infra.Repositories;
 public class UsuarioRepository : Repository<Usuario>, IUsuarioRepository
 {
    

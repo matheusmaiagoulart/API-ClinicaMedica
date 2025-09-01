@@ -1,11 +1,10 @@
 ﻿using API_ClinicaMedica.Domain.Entities;
 using API_ClinicaMedica.Domain.Enums;
 using API_ClinicaMedica.Infra.Data.DbContext;
-using API_ClinicaMedica.Infra.Repositories.Interfaces;
-using API_ClinicaMedica.Infra.Repositories.Interfaces.MedicosRepository;
+using API_ClinicaMedica.Infra.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
-namespace API_ClinicaMedica.Infra.Repositories.Implementations.MedicoRepository;
+namespace API_ClinicaMedica.Infra.Repositories;
 
 public class MedicoRepository : Repository<Medico>, IMedicoRepository
 {
