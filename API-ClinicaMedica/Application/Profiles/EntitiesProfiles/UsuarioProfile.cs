@@ -3,7 +3,7 @@ using API_ClinicaMedica.Domain.Entities;
 using API_ClinicaMedica.Domain.ValueObjects;
 using AutoMapper;
 
-namespace API_ClinicaMedica.Application.Profiles.UsuarioProfiles;
+namespace API_ClinicaMedica.Application.Profiles.EntitiesProfiles;
 
 public class UsuarioProfile : Profile
 {

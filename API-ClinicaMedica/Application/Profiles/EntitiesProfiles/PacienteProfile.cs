@@ -2,7 +2,7 @@
 using API_ClinicaMedica.Domain.Entities;
 using AutoMapper;
 
-namespace API_ClinicaMedica.Application.Profiles.PacienteProfiles;
+namespace API_ClinicaMedica.Application.Profiles.EntitiesProfiles;
 
 public class PacienteProfile : Profile
 {
