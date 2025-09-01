@@ -1,15 +1,13 @@
-﻿using System.Runtime.InteropServices.JavaScript;
+﻿
 using API_ClinicaMedica.Application.DTOs.UsuarioDTOs;
-using API_ClinicaMedica.Application.Results;
 using API_ClinicaMedica.Application.Results.GenericsResults;
 using API_ClinicaMedica.Application.Results.UsuariosResults;
 using API_ClinicaMedica.Application.Services.UsuarioService.Interfaces;
 using API_ClinicaMedica.Application.Validations.UsuarioValidationInformacoesBasicas.Interface;
 using API_ClinicaMedica.Domain.Entities;
-using API_ClinicaMedica.Infra.Exceptions;
 using API_ClinicaMedica.Infra.Repositories.UnitOfWork;
 using AutoMapper;
-using FluentValidation;
+
 
 
 namespace API_ClinicaMedica.Application.Services.UsuarioService.Implementations;
