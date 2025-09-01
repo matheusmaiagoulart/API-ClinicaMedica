@@ -1,17 +1,14 @@
 ﻿using API_ClinicaMedica.Application.DTOs.MedicoDTOs;
-using API_ClinicaMedica.Application.DTOs.PacienteDTOs;
-using API_ClinicaMedica.Application.FluentValidation.MedicoValidations;
+using API_ClinicaMedica.Application.Interfaces;
+using API_ClinicaMedica.Application.Results.EntitiesResults;
 using API_ClinicaMedica.Application.Results.GenericsResults;
-using API_ClinicaMedica.Application.Results.MedicosResults;
-using API_ClinicaMedica.Application.Results.UsuariosResults;
-using API_ClinicaMedica.Application.Services.MedicoService.Interfaces;
 using API_ClinicaMedica.Domain.Entities;
 using API_ClinicaMedica.Domain.Enums;
-using API_ClinicaMedica.Infra.Repositories.UnitOfWork;
+using API_ClinicaMedica.Infra.Interfaces;
 using AutoMapper;
 using Microsoft.IdentityModel.Tokens;
 
-namespace API_ClinicaMedica.Application.Services.MedicoService.Implementations;
+namespace API_ClinicaMedica.Application.Services;
 
 public class MedicoService : IMedicoService
 {
@@ -28,16 +25,16 @@ public class MedicoService : IMedicoService
     {
         var usuario = await _uow.Usuarios.existsById(dto.IdUsuario);
         if (!usuario)
-            return Result<Medico>.Failure(UsuariosErrosResults.UsuarioNaoEncontrado());
+            return Result<Medico>.Failure(UsuarioErrosResults.UsuarioNaoEncontrado());
         
         var jaVinculado = await _uow.Medicos.existsMedicoById(dto.IdUsuario);
         if (jaVinculado)
-            return Result<Medico>.Failure(MedicosErrosResult.IdJaVinculadoAUsuario());
+            return Result<Medico>.Failure(MedicoErrosResult.IdJaVinculadoAUsuario());
         
         var CRMExists = await _uow.Medicos.CRMExists(dto.CrmNumber);
         if (CRMExists)
         {
-            return Result<Medico>.Failure(MedicosErrosResult.CrmJaExistenteNoDB());
+            return Result<Medico>.Failure(MedicoErrosResult.CrmJaExistenteNoDB());
         }
         
         var newMedico = _mapper.Map<Medico>(dto);
@@ -54,7 +51,7 @@ public class MedicoService : IMedicoService
     {
         var medico = await _uow.Medicos.GetMedicoById(id);
         if (medico == null)
-            return Result<MedicoDTO>.Failure(MedicosErrosResult.MedicoNaoEncontrado());
+            return Result<MedicoDTO>.Failure(MedicoErrosResult.MedicoNaoEncontrado());
         
         var medicoDTO = _mapper.Map<MedicoDTO>(medico);
         
@@ -65,7 +62,7 @@ public class MedicoService : IMedicoService
     {
         var allActiveMedicos = await _uow.Medicos.GetAllActiveMedicos();
         if(allActiveMedicos == null)
-            return Result<IEnumerable<MedicoDTO>>.Failure(MedicosErrosResult.MedicosAtivosNaoEncontrados());
+            return Result<IEnumerable<MedicoDTO>>.Failure(MedicoErrosResult.MedicosAtivosNaoEncontrados());
         
         var allActiveMedicosDTO = _mapper.Map<IEnumerable<MedicoDTO>>(allActiveMedicos);
         
@@ -76,7 +73,7 @@ public class MedicoService : IMedicoService
     {
         var medicos = await _uow.Medicos.GetMedicosByEspecialidadeAndActiveTrue(e);
         if(medicos.IsNullOrEmpty())
-            return Result<IEnumerable<MedicoDTO>>.Failure(MedicosErrosResult.NenhumMedicoParaEssaEspecialidade());
+            return Result<IEnumerable<MedicoDTO>>.Failure(MedicoErrosResult.NenhumMedicoParaEssaEspecialidade());
         
         var medicosDTO = _mapper.Map<IEnumerable<MedicoDTO>>(medicos);
         
@@ -87,7 +84,7 @@ public class MedicoService : IMedicoService
     {
         var allMedicos = await _uow.Medicos.GetAllMedicos();
         if(allMedicos == null)
-            return Result<IEnumerable<MedicoDTO>>.Failure(MedicosErrosResult.MedicosNaoEncontrados());
+            return Result<IEnumerable<MedicoDTO>>.Failure(MedicoErrosResult.MedicosNaoEncontrados());
         
         var allMedicosDTO = _mapper.Map<IEnumerable<MedicoDTO>>(allMedicos);
         
@@ -98,7 +95,7 @@ public class MedicoService : IMedicoService
     {
         var medicosPorEspecialidade = await _uow.Medicos.GetMedicosByEspecialidade(especialidade);
         if(medicosPorEspecialidade == null)
-            return Result<IEnumerable<MedicoDTO>>.Failure(MedicosErrosResult.NenhumMedicoParaEssaEspecialidade());
+            return Result<IEnumerable<MedicoDTO>>.Failure(MedicoErrosResult.NenhumMedicoParaEssaEspecialidade());
         
         var medicosPorEspecialidadeDTO = _mapper.Map<IEnumerable<MedicoDTO>>(medicosPorEspecialidade);
         return Result<IEnumerable<MedicoDTO>>.Success(medicosPorEspecialidadeDTO);
@@ -114,12 +111,12 @@ public class MedicoService : IMedicoService
     {
         var medico = await _uow.Medicos.GetMedicoById(id);
         if (medico == null)
-            return Result.Failure(MedicosErrosResult.MedicoNaoEncontrado());
+            return Result.Failure(MedicoErrosResult.MedicoNaoEncontrado());
 
         var result = medico.SoftDelete();
         if (!result)
         {
-            return Result.Failure(MedicosErrosResult.MedicoJaInativo());
+            return Result.Failure(MedicoErrosResult.MedicoJaInativo());
         }
         await _uow.CommitAsync();
         return Result.Success();
@@ -129,7 +126,7 @@ public class MedicoService : IMedicoService
     {
         var medico = await _uow.Medicos.GetMedicoByCRM(crmNumber);
         if(medico == null)
-            return Result<MedicoDTO>.Failure(MedicosErrosResult.CrmNaoLocalizado());
+            return Result<MedicoDTO>.Failure(MedicoErrosResult.CrmNaoLocalizado());
         var medicoDTO = _mapper.Map<MedicoDTO>(medico);
         return Result<MedicoDTO>.Success(medicoDTO);
     }

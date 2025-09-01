@@ -1,13 +1,12 @@
 ﻿using API_ClinicaMedica.Application.DTOs.PacienteDTOs;
+using API_ClinicaMedica.Application.Interfaces;
+using API_ClinicaMedica.Application.Results.EntitiesResults;
 using API_ClinicaMedica.Application.Results.GenericsResults;
-using API_ClinicaMedica.Application.Results.PacientesResults;
-using API_ClinicaMedica.Application.Results.UsuariosResults;
-using API_ClinicaMedica.Application.Services.PacienteService.Interfaces;
 using API_ClinicaMedica.Domain.Entities;
-using API_ClinicaMedica.Infra.Repositories.UnitOfWork;
+using API_ClinicaMedica.Infra.Interfaces;
 using AutoMapper;
 
-namespace API_ClinicaMedica.Application.Services.PacienteService.Implementations;
+namespace API_ClinicaMedica.Application.Services;
 
 public class PacienteService : IPacienteService
 {
@@ -25,12 +24,12 @@ public class PacienteService : IPacienteService
         //Validação da existência do usuário
         var usuario = await _uow.Usuarios.existsById(dto.IdUsuario);
         if(usuario == false)
-            return Result<Paciente>.Failure(UsuariosErrosResults.UsuarioNaoEncontrado());
+            return Result<Paciente>.Failure(UsuarioErrosResults.UsuarioNaoEncontrado());
         
         //Validação se o usuário já está vinculado a um paciente, procurando o IdUsuario na tabela Pacientes
         var jaVinculado = await _uow.Pacientes.existsById(dto.IdUsuario);
         if(jaVinculado)
-            return Result<Paciente>.Failure(PacientesErrorsResult.IdJaVinculadoAUsuario());
+            return Result<Paciente>.Failure(PacienteErrorsResult.IdJaVinculadoAUsuario());
         
         //Criação do paciente e vinculação com o Usuario passado
         var newPaciente = _mapper.Map<Paciente>(dto);
@@ -47,7 +46,7 @@ public class PacienteService : IPacienteService
         var paciente = await _uow.Pacientes.GetPacienteById(id);
         if (paciente == null)
         {
-            return Result<PacienteDTO>.Failure(PacientesErrorsResult.PacienteNaoEncontrado());
+            return Result<PacienteDTO>.Failure(PacienteErrorsResult.PacienteNaoEncontrado());
         }
         var pacienteDto = _mapper.Map<PacienteDTO>(paciente);
         return Result<PacienteDTO>.Success(pacienteDto);
@@ -58,7 +57,7 @@ public class PacienteService : IPacienteService
        var allPacientes = await _uow.Pacientes.GetAllPacientes();
        
        if (allPacientes == null)
-           return Result<IEnumerable<PacienteDTO>>.Failure(PacientesErrorsResult.PacientesNaoEncontrados());
+           return Result<IEnumerable<PacienteDTO>>.Failure(PacienteErrorsResult.PacientesNaoEncontrados());
        
        var pacientesDTO = _mapper.Map<IEnumerable<PacienteDTO>>(allPacientes);
          
@@ -70,7 +69,7 @@ public class PacienteService : IPacienteService
     {
         var paciente = await _uow.Pacientes.GetPacienteById(id);
         if(paciente == null)
-            return Result<Paciente>.Failure(PacientesErrorsResult.PacienteNaoEncontrado());
+            return Result<Paciente>.Failure(PacienteErrorsResult.PacienteNaoEncontrado());
         
         paciente.Desativar();
         await _uow.CommitAsync();
@@ -82,7 +81,7 @@ public class PacienteService : IPacienteService
     {
         var paciente = await _uow.Pacientes.GetPacienteById(id);
         if(paciente == null)
-            return Result<PacienteDTO>.Failure(PacientesErrorsResult.PacienteNaoEncontrado());
+            return Result<PacienteDTO>.Failure(PacienteErrorsResult.PacienteNaoEncontrado());
         
         var pcienteAtualizado = _mapper.Map(dto, paciente);
         
