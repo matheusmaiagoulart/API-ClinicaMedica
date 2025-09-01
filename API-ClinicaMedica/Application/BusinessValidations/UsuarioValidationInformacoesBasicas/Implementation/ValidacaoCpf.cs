@@ -1,12 +1,10 @@
-﻿
+﻿using API_ClinicaMedica.Application.BusinessValidations.UsuarioValidationInformacoesBasicas.Interface;
 using API_ClinicaMedica.Application.DTOs.UsuarioDTOs;
-using API_ClinicaMedica.Application.Results;
+using API_ClinicaMedica.Application.Results.EntitiesResults;
 using API_ClinicaMedica.Application.Results.GenericsResults;
-using API_ClinicaMedica.Application.Results.UsuariosResults;
-using API_ClinicaMedica.Application.Validations.UsuarioValidationInformacoesBasicas.Interface;
-using API_ClinicaMedica.Infra.Repositories.UnitOfWork;
+using API_ClinicaMedica.Infra.Interfaces;
 
-namespace API_ClinicaMedica.Application.Validations.UsuarioValidationInformacoesBasicas.Implementation;
+namespace API_ClinicaMedica.Application.BusinessValidations.UsuarioValidationInformacoesBasicas.Implementation;
 
 public class ValidacaoCpf : IValidacaoInformacoesBasicas
 {
@@ -16,7 +14,7 @@ public class ValidacaoCpf : IValidacaoInformacoesBasicas
         _unitOfWork = unitOfWork;
     }
 
-    public async Task<Result> validacao(UniqueFieldsValidationDTO dto)
+    public async Task<Result> Validacao(UniqueFieldsValidationDTO dto)
     {
         var cpfUser = dto.InformacoesBasicas.Cpf;
 
@@ -26,7 +24,7 @@ public class ValidacaoCpf : IValidacaoInformacoesBasicas
 
             if (user == null)
             {
-                return Result.Failure(UsuariosErrosResults.UsuarioNaoEncontrado());
+                return Result.Failure(UsuarioErrosResults.UsuarioNaoEncontrado());
             }
 
             if (user.InformacoesBasicas.Cpf != dto.InformacoesBasicas.Cpf)
@@ -35,7 +33,7 @@ public class ValidacaoCpf : IValidacaoInformacoesBasicas
                 var cpfIsAvailableUpdate = await _unitOfWork.Usuarios.isCpfAvailable(cpfUser);
 
                 if (cpfIsAvailableUpdate == false)
-                    return Result.Failure(UsuariosErrosResults.CpfJaCadastrado(cpfUser));
+                    return Result.Failure(UsuarioErrosResults.CpfJaCadastrado(cpfUser));
             }
 
             return Result.Success();
@@ -46,7 +44,7 @@ public class ValidacaoCpf : IValidacaoInformacoesBasicas
 
             var cpfIsAvailable = await _unitOfWork.Usuarios.isCpfAvailable(cpf);
             if (cpfIsAvailable == false)
-                return Result.Failure(UsuariosErrosResults.CpfJaCadastrado(cpf));
+                return Result.Failure(UsuarioErrosResults.CpfJaCadastrado(cpf));
 
             return Result.Success();
 

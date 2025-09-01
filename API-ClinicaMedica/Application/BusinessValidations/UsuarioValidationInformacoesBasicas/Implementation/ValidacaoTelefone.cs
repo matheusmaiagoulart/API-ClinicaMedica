@@ -1,12 +1,10 @@
-﻿
+﻿using API_ClinicaMedica.Application.BusinessValidations.UsuarioValidationInformacoesBasicas.Interface;
 using API_ClinicaMedica.Application.DTOs.UsuarioDTOs;
-using API_ClinicaMedica.Application.Results;
+using API_ClinicaMedica.Application.Results.EntitiesResults;
 using API_ClinicaMedica.Application.Results.GenericsResults;
-using API_ClinicaMedica.Application.Results.UsuariosResults;
-using API_ClinicaMedica.Application.Validations.UsuarioValidationInformacoesBasicas.Interface;
-using API_ClinicaMedica.Infra.Repositories.UnitOfWork;
+using API_ClinicaMedica.Infra.Interfaces;
 
-namespace API_ClinicaMedica.Application.Validations.UsuarioValidationInformacoesBasicas.Implementation;
+namespace API_ClinicaMedica.Application.BusinessValidations.UsuarioValidationInformacoesBasicas.Implementation;
 
 public class ValidacaoTelefone : IValidacaoInformacoesBasicas
 {
@@ -17,7 +15,7 @@ public class ValidacaoTelefone : IValidacaoInformacoesBasicas
         _unitOfWork = unitOfWork;
     }
 
-    public async Task<Result> validacao(UniqueFieldsValidationDTO dto)
+    public async Task<Result> Validacao(UniqueFieldsValidationDTO dto)
     {
         var telefone = dto.InformacoesBasicas.Telefone;
 
@@ -27,7 +25,7 @@ public class ValidacaoTelefone : IValidacaoInformacoesBasicas
             var user = await _unitOfWork.Usuarios.GetUserById(dto.IdUsuario);
             if (user == null)
             {
-                return Result.Failure(UsuariosErrosResults.UsuarioNaoEncontrado());
+                return Result.Failure(UsuarioErrosResults.UsuarioNaoEncontrado());
             }
 
             if (user.InformacoesBasicas.Telefone != dto.InformacoesBasicas.Telefone)
@@ -37,14 +35,14 @@ public class ValidacaoTelefone : IValidacaoInformacoesBasicas
                 var isTelefoneAvailable = await _unitOfWork.Usuarios.isTelefoneAvailable(telefone);
 
                 if (isTelefoneAvailable == false)
-                    Result.Failure(UsuariosErrosResults.TelefoneJaCadastrado(telefone));
+                    Result.Failure(UsuarioErrosResults.TelefoneJaCadastrado(telefone));
 
             }
         }
         var telefoneAvalialble = await _unitOfWork.Usuarios.isTelefoneAvailable(telefone);
         if (telefoneAvalialble == false)
         {
-            return Result.Failure(UsuariosErrosResults.TelefoneJaCadastrado(telefone));
+            return Result.Failure(UsuarioErrosResults.TelefoneJaCadastrado(telefone));
         }
 
         return Result.Success();

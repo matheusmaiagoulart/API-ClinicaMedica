@@ -1,13 +1,10 @@
-﻿
-using System.Xml;
+﻿using API_ClinicaMedica.Application.BusinessValidations.UsuarioValidationInformacoesBasicas.Interface;
 using API_ClinicaMedica.Application.DTOs.UsuarioDTOs;
-using API_ClinicaMedica.Application.Results;
+using API_ClinicaMedica.Application.Results.EntitiesResults;
 using API_ClinicaMedica.Application.Results.GenericsResults;
-using API_ClinicaMedica.Application.Results.UsuariosResults;
-using API_ClinicaMedica.Application.Validations.UsuarioValidationInformacoesBasicas.Interface;
-using API_ClinicaMedica.Infra.Repositories.UnitOfWork;
+using API_ClinicaMedica.Infra.Interfaces;
 
-namespace API_ClinicaMedica.Application.Validations.UsuarioValidationInformacoesBasicas.Implementation;
+namespace API_ClinicaMedica.Application.BusinessValidations.UsuarioValidationInformacoesBasicas.Implementation;
 
 public class ValidacaoEmail : IValidacaoInformacoesBasicas
 {
@@ -17,7 +14,7 @@ public class ValidacaoEmail : IValidacaoInformacoesBasicas
         _unitOfWork = unitOfWork;
     }
 
-    public async Task<Result> validacao(UniqueFieldsValidationDTO dto)
+    public async Task<Result> Validacao(UniqueFieldsValidationDTO dto)
     {
         var email = dto.Email;
         if (dto.IdUsuario != null && dto.IdUsuario > 0)
@@ -26,7 +23,7 @@ public class ValidacaoEmail : IValidacaoInformacoesBasicas
             var userObj = await _unitOfWork.Usuarios.GetUserById(dto.IdUsuario);
             if (userObj  == null)
             {
-                return Result.Failure(UsuariosErrosResults.UsuarioNaoEncontrado());
+                return Result.Failure(UsuarioErrosResults.UsuarioNaoEncontrado());
             }
             if (userObj.Email != dto.Email)
             {
@@ -34,7 +31,7 @@ public class ValidacaoEmail : IValidacaoInformacoesBasicas
                 //Validação de disponibilidade do email no banco de dados
                 var isEmailAvailable = await _unitOfWork.Usuarios.isEmailAvailable(dto.Email);
                 if (isEmailAvailable == false)
-                    return Result.Failure(UsuariosErrosResults.EmailJaCadastrado(dto.Email));
+                    return Result.Failure(UsuarioErrosResults.EmailJaCadastrado(dto.Email));
             }
             return Result.Success();
         }
@@ -44,7 +41,7 @@ public class ValidacaoEmail : IValidacaoInformacoesBasicas
             var EmailAvailable = await _unitOfWork.Usuarios.isEmailAvailable(dto.Email);
 
             if (EmailAvailable == false)
-                return Result.Failure(UsuariosErrosResults.EmailJaCadastrado(dto.Email));
+                return Result.Failure(UsuarioErrosResults.EmailJaCadastrado(dto.Email));
 
             return Result.Success();
     }
