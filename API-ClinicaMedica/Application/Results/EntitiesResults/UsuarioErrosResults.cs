@@ -1,8 +1,8 @@
 ﻿using API_ClinicaMedica.Application.Results.GenericsResults;
 
-namespace API_ClinicaMedica.Application.Results.UsuariosResults;
+namespace API_ClinicaMedica.Application.Results.EntitiesResults;
 
-public class UsuariosErrosResults
+public class UsuarioErrosResults
 {
     
     public static Error UsuarioNaoEncontrado() =>

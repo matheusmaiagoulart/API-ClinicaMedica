@@ -1,8 +1,8 @@
 ﻿using API_ClinicaMedica.Application.Results.GenericsResults;
 
-namespace API_ClinicaMedica.Application.Results.MedicosResults;
+namespace API_ClinicaMedica.Application.Results.EntitiesResults;
 
-public class MedicosErrosResult
+public class MedicoErrosResult
 {
     public static Error IdJaVinculadoAUsuario() =>
         new ("IdJaVinculadoAUsuario", "O Id do usuário já está vinculado a um Médico na base de dados.", StatusCodes.Status400BadRequest);

@@ -1,8 +1,8 @@
 ﻿using API_ClinicaMedica.Application.Results.GenericsResults;
 
-namespace API_ClinicaMedica.Application.Results.PacientesResults;
+namespace API_ClinicaMedica.Application.Results.EntitiesResults;
 
-public class PacientesErrorsResult
+public class PacienteErrorsResult
 {
     public static Error PacienteNaoEncontrado() =>
         new("PacienteNaoEncontrado", "Paciente não encontrado na base de dados.", StatusCodes.Status404NotFound);
