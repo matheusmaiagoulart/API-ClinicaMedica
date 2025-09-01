@@ -4,7 +4,6 @@ using API_ClinicaMedica.Application.Results;
 using API_ClinicaMedica.Application.Results.GenericsResults;
 using API_ClinicaMedica.Application.Results.UsuariosResults;
 using API_ClinicaMedica.Application.Validations.UsuarioValidationInformacoesBasicas.Interface;
-using API_ClinicaMedica.Infra.Exceptions;
 using API_ClinicaMedica.Infra.Repositories.UnitOfWork;
 
 namespace API_ClinicaMedica.Application.Validations.UsuarioValidationInformacoesBasicas.Implementation;
