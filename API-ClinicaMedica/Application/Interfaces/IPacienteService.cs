@@ -1,10 +1,8 @@
-﻿
-using API_ClinicaMedica.Application.DTOs.PacienteDTOs;
-using API_ClinicaMedica.Application.Results;
+﻿using API_ClinicaMedica.Application.DTOs.PacienteDTOs;
 using API_ClinicaMedica.Application.Results.GenericsResults;
 using API_ClinicaMedica.Domain.Entities;
 
-namespace API_ClinicaMedica.Application.Services.PacienteService.Interfaces;
+namespace API_ClinicaMedica.Application.Interfaces;
 
 public interface IPacienteService
 {
