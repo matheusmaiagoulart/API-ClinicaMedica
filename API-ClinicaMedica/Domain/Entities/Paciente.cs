@@ -29,6 +29,10 @@ public class Paciente
         this.MedicamentosControlados = medicamentosControlados ?? new List<MedicamentoControlado>();
     }
 
+    public void setPacienteId(int id)
+    {
+        IdPaciente = id;
+    }
     public void setAtivoTrue()
     {
         Ativo = true;
