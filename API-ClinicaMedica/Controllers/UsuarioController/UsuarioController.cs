@@ -1,7 +1,5 @@
 ﻿using API_ClinicaMedica.Application.DTOs.UsuarioDTOs;
-using API_ClinicaMedica.Application.Results;
 using API_ClinicaMedica.Application.Services.UsuarioService.Interfaces;
-using API_ClinicaMedica.Infra.Exceptions;
 using FluentValidation;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
