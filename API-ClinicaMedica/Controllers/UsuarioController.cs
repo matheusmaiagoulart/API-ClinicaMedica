@@ -1,10 +1,10 @@
 ﻿using API_ClinicaMedica.Application.DTOs.UsuarioDTOs;
-using API_ClinicaMedica.Application.Services.UsuarioService.Interfaces;
+using API_ClinicaMedica.Application.Interfaces;
 using FluentValidation;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace API_ClinicaMedica.Controllers.UsuarioController;
+namespace API_ClinicaMedica.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]

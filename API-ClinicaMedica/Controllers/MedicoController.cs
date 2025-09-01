@@ -1,10 +1,10 @@
 ﻿using API_ClinicaMedica.Application.DTOs.MedicoDTOs;
-using API_ClinicaMedica.Application.Services.MedicoService.Interfaces;
+using API_ClinicaMedica.Application.Interfaces;
 using API_ClinicaMedica.Domain.Enums;
 using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
 
-namespace API_ClinicaMedica.Controllers.MedicoController;
+namespace API_ClinicaMedica.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
