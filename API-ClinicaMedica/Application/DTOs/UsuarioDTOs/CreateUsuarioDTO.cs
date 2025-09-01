@@ -1,4 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿
 using API_ClinicaMedica.Application.DTOs.ValueObjectsDTOs.EnderecoDTOs;
 using API_ClinicaMedica.Application.DTOs.ValueObjectsDTOs.InformacoesBasicasDTOs;
 
