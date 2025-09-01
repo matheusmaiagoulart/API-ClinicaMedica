@@ -16,9 +16,10 @@ public class MedicosDB : IEntityTypeConfiguration<Medico>
                 .HasForeignKey<Medico>(p => p.IdMedico)
                 .HasConstraintName("FK_Medico_Usuario");
             
-            e.Property(p => p.Ativo).IsRequired();
-            e.Property(u => u.Especialidade).HasColumnName("Especialidade").IsRequired();
-            e.Property(i => i.Crm).HasColumnName("Crm").IsRequired().HasMaxLength(15);
+            e.Property(m => m.Ativo).IsRequired();
+            e.Property(m => m.Especialidade).HasColumnName("Especialidade").IsRequired();
+            e.Property(m => m.UfCrm).HasColumnName("UfCrm").IsRequired();
+            e.Property(m => m.CrmNumber).HasColumnName("Crm").IsRequired().HasMaxLength(15);
             
         };
     }
