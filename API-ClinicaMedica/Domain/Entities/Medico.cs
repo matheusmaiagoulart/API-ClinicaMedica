@@ -1,7 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using API_ClinicaMedica.Domain.Enums;
-using API_ClinicaMedica.Domain.ValueObjects;
 
 namespace API_ClinicaMedica.Domain.Entities;
 
@@ -9,22 +8,33 @@ namespace API_ClinicaMedica.Domain.Entities;
 public class Medico
 {
     [Key]
-    public int IdMedico { get; }
-    public Usuario Usuario { get; set; }
+    public int IdMedico { get; private set; }
+    public Usuario Usuario { get; private set; }
     public Especialidades Especialidade { get; private set;}
-    
-    public string Crm { get; private set;}
+    public Estados UfCrm { get; private set; }
+    public string CrmNumber { get; private set;}
     public bool Ativo { get; private set; }
 
     protected Medico()
     {
         
     }
-    public Medico(Usuario usuario, Especialidades especialidade, string crm, bool ativo)
+    public Medico(int IdUsuario, Usuario usuario, Especialidades especialidade, string crmNumber, bool ativo, Estados ufCrm)
     {
+        IdMedico = IdUsuario;
         Usuario = usuario;
         Especialidade = especialidade;
-        Crm = crm;
-        Ativo = ativo;
+        CrmNumber = crmNumber;
+        UfCrm = ufCrm;
+        Ativo = true;
+    }
+    
+    public bool SoftDelete()
+    {
+        if(!Ativo) 
+            return false;
+        
+        Ativo = false;
+        return true;
     }
 }
