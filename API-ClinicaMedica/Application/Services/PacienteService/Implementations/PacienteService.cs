@@ -1,5 +1,4 @@
 ﻿using API_ClinicaMedica.Application.DTOs.PacienteDTOs;
-using API_ClinicaMedica.Application.Results;
 using API_ClinicaMedica.Application.Results.GenericsResults;
 using API_ClinicaMedica.Application.Results.PacientesResults;
 using API_ClinicaMedica.Application.Results.UsuariosResults;
@@ -35,7 +34,7 @@ public class PacienteService : IPacienteService
         
         //Criação do paciente e vinculação com o Usuario passado
         var newPaciente = _mapper.Map<Paciente>(dto);
-        newPaciente.IdPaciente = dto.IdUsuario;
+        newPaciente.setPacienteId(dto.IdUsuario);
         newPaciente.setAtivoTrue();
         await _uow.Pacientes.AddAsync(newPaciente);
         await _uow.CommitAsync();
