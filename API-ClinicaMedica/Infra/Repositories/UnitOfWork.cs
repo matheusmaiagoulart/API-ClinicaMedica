@@ -10,12 +10,15 @@ public class UnitOfWork : IUnitOfWork
     public IUsuarioRepository Usuarios { get; private set; }
     public IPacienteRepository Pacientes { get; private set; }
     public IMedicoRepository Medicos { get; private set; }
+    
+    public IConsultaRepository Consultas { get; private set; }
     public UnitOfWork(AppDbContext context)
     {
         _context = context;
         Usuarios = new UsuarioRepository(_context);
         Pacientes = new PacienteRepository(_context);
         Medicos = new MedicoRepository(_context);
+        Consultas = new ConsultaRepository(_context);
     }
 
     
