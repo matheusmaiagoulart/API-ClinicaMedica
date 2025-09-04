@@ -21,4 +21,6 @@ public interface IMedicoRepository : IRepository<Medico>
     
     Task<bool> CRMExists(string crmNumber);
     
+    Task<Especialidades> GetEspecialidadeById(int id);
+    
 }

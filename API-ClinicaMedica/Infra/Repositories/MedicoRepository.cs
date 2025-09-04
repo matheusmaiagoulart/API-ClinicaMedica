@@ -76,4 +76,12 @@ public class MedicoRepository : Repository<Medico>, IMedicoRepository
                 .Where(m => m.CrmNumber == crmNumber)
                 .AnyAsync();
     }
+
+    public async Task<Especialidades> GetEspecialidadeById(int id)
+    {
+        return await _context.Medicos
+            .Where(m => m.IdMedico == id)
+            .Select(m => m.Especialidade)
+            .FirstOrDefaultAsync();
+    }
 }
