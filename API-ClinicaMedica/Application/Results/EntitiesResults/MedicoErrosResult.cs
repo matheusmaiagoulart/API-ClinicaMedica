@@ -19,6 +19,9 @@ public class MedicoErrosResult
     public static Error MedicosAtivosNaoEncontrados() =>
         new ("MedicosAtivosNaoEncontrados", "Não foram encontrados Médicos ativos na base de dados.", StatusCodes.Status404NotFound);
     
+    public static Error MedicoNaoPossuiEspecialidade() => 
+    new ("MedicoNaoPossuiEspecialidade", "O Médico não possui a especialidade informada.", StatusCodes.Status400BadRequest);
+    
     public static Error MedicoJaInativo() =>
         new ("MedicoJaInativo", "O Médico já consta inativo e não pode ser desativado.", StatusCodes.Status400BadRequest);
     
