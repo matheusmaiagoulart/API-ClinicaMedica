@@ -38,4 +38,7 @@ public class ConsultaErrosResult
     
     public static Error CancelamentoForaDoPrazo() =>
         new ("CancelamentoForaDoPrazo", "O cancelamento só pode ser feito com no mínimo 24h de antecedência.", StatusCodes.Status400BadRequest);
+    
+    public static Error DataForaDosDiasUteis() => 
+        new ("DataForaDosDiasUteis", "A consulta só pode ser marcada de segunda a sexta-feira.", StatusCodes.Status400BadRequest);
 }
