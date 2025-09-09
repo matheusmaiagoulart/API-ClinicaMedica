@@ -19,14 +19,13 @@ public class Medico
     {
         
     }
-    public Medico(int IdUsuario, Usuario usuario, Especialidades especialidade, string crmNumber, bool ativo, Estados ufCrm)
+    public Medico(int IdUsuario, Especialidades especialidade, string crmNumber, bool? ativo, Estados ufCrm)
     {
         IdMedico = IdUsuario;
-        Usuario = usuario;
         Especialidade = especialidade;
         CrmNumber = crmNumber;
         UfCrm = ufCrm;
-        Ativo = true;
+        Ativo = ativo ?? true;
     }
     
     public bool SoftDelete()
