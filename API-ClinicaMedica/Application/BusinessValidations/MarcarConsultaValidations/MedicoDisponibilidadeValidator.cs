@@ -24,7 +24,6 @@ public class MedicoDisponibilidadeValidator : IMarcarConsultaValidator
         {
             //Buscar por medico aleatorio
 
-            var medicoAleatorioDisponivel = await _unitOfWork.Consultas.EscolheMedicoAleatorio(dataConsulta, especialidade);
             var medicoAleatorioDisponivel =
                 await _unitOfWork.Consultas.EscolheMedicoAleatorio(dataConsulta, especialidade);
             if (medicoAleatorioDisponivel == null)
