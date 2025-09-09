@@ -10,14 +10,7 @@ namespace API_ClinicaMedica.Application.BusinessValidations.MarcarConsultaValida
 
 public class ValidarHoraConsulta : IMarcarConsultaValidator
 {
-    public int Order => 1;
-    private readonly IUnitOfWork _unitOfWork;
-    public ValidarHoraConsulta(IUnitOfWork unitOfWork)
-    {
-        _unitOfWork = unitOfWork;
-    }
-
-
+    
     public async Task<Result> Validacao(CreateConsultaDTO dto)
     {
         //Garante que a consulta seja marcada dentro dos horários permitidos
@@ -29,7 +22,7 @@ public class ValidarHoraConsulta : IMarcarConsultaValidator
             var proximaConsulta = HorariosConsultas.Horarios()
                 .FirstOrDefault(horario => horario > horaConsulta);
             
-            if(proximaConsulta.Hours.Equals(00))
+            if(proximaConsulta == TimeSpan.Zero)
             {
                 var proxima = (TimeSpan) HorariosConsultas.Horarios().GetValue(0);
                 return Result.Failure(ConsultaErrosResult.HorarioNaoPermitido(proxima)); 
