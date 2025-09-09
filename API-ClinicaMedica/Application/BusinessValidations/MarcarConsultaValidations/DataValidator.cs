@@ -7,11 +7,6 @@ namespace API_ClinicaMedica.Application.BusinessValidations.MarcarConsultaValida
 
 public class DataValidator : IMarcarConsultaValidator
 {
-    private readonly IUnitOfWork _unitOfWork;
-    public DataValidator(IUnitOfWork unitOfWork)
-    {
-        _unitOfWork = unitOfWork;
-    }
 
     public async Task<Result> Validacao(CreateConsultaDTO dto)
     {
