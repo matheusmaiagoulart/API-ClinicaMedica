@@ -62,7 +62,7 @@ public class ConsultaService : IConsultaService
             return Result.Failure(ConsultaErrosResult.CancelamentoForaDoPrazo()); //24h de antecedência
         
         consulta.CancelarConsulta(motivo);
-        _unitOfWork.Consultas.UpdateAsync(consulta);
+        await _unitOfWork.Consultas.UpdateAsync(consulta);
         await _unitOfWork.CommitAsync();
         return Result.Success();
         
