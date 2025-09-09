@@ -21,7 +21,7 @@ public class MedicoValidoValidator : IMarcarConsultaValidator
             return Result.Failure(MedicoErrosResult.MedicoNaoEncontrado());
         
         if(!medico.Ativo)
-            return Result.Failure(MedicoErrosResult.MedicoJaInativo());
+            return Result.Failure(MedicoErrosResult.MedicoInativo());
         
         return Result.Success();
     }
