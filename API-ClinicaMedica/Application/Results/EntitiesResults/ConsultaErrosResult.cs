@@ -8,10 +8,10 @@ public class ConsultaErrosResult
         new ("AntecedenciaMinimaNecessaria", "A consulta precisa ser marcada com pelo menos 1h de antecedência.", StatusCodes.Status400BadRequest);
     
     public static Error DataInvalidaMaiorTresMeses() =>
-        new ("DataInvalida", "A data da consulta tem que ser menor que três meses subsequentes.", StatusCodes.Status400BadRequest);
+        new ("DataInvalidaMaiorTresMeses", "A data da consulta tem que ser menor que três meses subsequentes.", StatusCodes.Status400BadRequest);
     
     public static Error DataInvalidaMenorQueAtual() =>
-    new ("DataInvalidaMenorQueHoje", "A data da consulta não pode ser menor que a data atual.", StatusCodes.Status400BadRequest);
+    new ("DataInvalidaMenorQueAtual", "A data da consulta não pode ser menor que a data atual.", StatusCodes.Status400BadRequest);
     
     public static Error DataForaDoHorarioDeAtendimento() =>
         new ("DataForaDoHorarioDeAtendimento", "A data da consulta precisa estar dentro do horário de atendimento (08:00 - 18:00).", StatusCodes.Status400BadRequest);
