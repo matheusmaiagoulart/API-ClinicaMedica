@@ -12,10 +12,12 @@ public static class HorariosConsultas
         var intervaloConsulta = TimeSpan.FromMinutes(30);
 
         var horarios = new List<TimeSpan>();
+        horarios.Add(inicio);
 
         var target = inicio;
 
-        for (var i = 0; i < total * 2; i++)
+        // Total * 2 - 1 porque o -1 representa os 30min finais que vão somar as 18h, mas não é um horário válido
+        for (var i = 0; i < ((total * 2) - 1); i++)
         {
             horarios.Add(target + TimeSpan.FromHours(intervaloConsulta.TotalHours));
             target = target + TimeSpan.FromHours(intervaloConsulta.TotalHours);
