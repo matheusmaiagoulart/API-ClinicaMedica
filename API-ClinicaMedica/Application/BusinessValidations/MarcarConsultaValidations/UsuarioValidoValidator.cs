@@ -18,7 +18,7 @@ public class UsuarioValidoValidator : IMarcarConsultaValidator
     {
         var paciente = await _unitOfWork.Pacientes.GetPacienteById(dto.IdPaciente);
         if (paciente == null)
-            return Result.Failure(UsuarioErrosResults.UsuarioNaoEncontrado());
+            return Result.Failure(PacienteErrorsResult.PacienteNaoEncontrado());
         
         if(!paciente.Ativo)
             return Result.Failure(PacienteErrorsResult.PacienteInativo());
