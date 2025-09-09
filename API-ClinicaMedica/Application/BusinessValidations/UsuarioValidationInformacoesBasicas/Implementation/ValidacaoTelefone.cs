@@ -19,7 +19,7 @@ public class ValidacaoTelefone : IValidacaoInformacoesBasicas
     {
         var telefone = dto.InformacoesBasicas.Telefone;
 
-        if (dto.IdUsuario != null && dto.IdUsuario > 0)
+        if (dto.IdUsuario > 0)
         {
             //Validação com ID valido, cai quando for atualização de algum usuário
             var user = await _unitOfWork.Usuarios.GetUserById(dto.IdUsuario);
@@ -35,7 +35,9 @@ public class ValidacaoTelefone : IValidacaoInformacoesBasicas
                 var isTelefoneAvailable = await _unitOfWork.Usuarios.isTelefoneAvailable(telefone);
 
                 if (isTelefoneAvailable == false)
-                    Result.Failure(UsuarioErrosResults.TelefoneJaCadastrado(telefone));
+                    return Result.Failure(UsuarioErrosResults.TelefoneJaCadastrado(telefone));
+                
+                return Result.Success();
 
             }
         }

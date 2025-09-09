@@ -17,7 +17,7 @@ public class ValidacaoEmail : IValidacaoInformacoesBasicas
     public async Task<Result> Validacao(UniqueFieldsValidationDTO dto)
     {
         var email = dto.Email;
-        if (dto.IdUsuario != null && dto.IdUsuario > 0)
+        if ( dto.IdUsuario > 0)
         {
             //Validação com ID valido, cai quando for atualização de algum usuário
             var userObj = await _unitOfWork.Usuarios.GetUserById(dto.IdUsuario);

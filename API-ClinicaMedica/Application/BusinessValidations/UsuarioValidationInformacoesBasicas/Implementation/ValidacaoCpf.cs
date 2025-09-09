@@ -18,7 +18,7 @@ public class ValidacaoCpf : IValidacaoInformacoesBasicas
     {
         var cpfUser = dto.InformacoesBasicas.Cpf;
 
-        if (dto.IdUsuario != null && dto.IdUsuario > 0)
+        if (dto.IdUsuario > 0)
         {
             var user = await _unitOfWork.Usuarios.GetUserById(dto.IdUsuario);
 
