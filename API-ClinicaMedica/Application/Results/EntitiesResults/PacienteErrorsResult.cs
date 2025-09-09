@@ -14,5 +14,5 @@ public class PacienteErrorsResult
         new("PacientesNaoEncontrados", "Nenhum paciente encontrado na base de dados.", StatusCodes.Status404NotFound);
     
     public static Error PacienteInativo() =>
-        new("PacienteInativo", "O paciente está inativo.", StatusCodes.Status404NotFound);
+        new("PacienteInativo", "O paciente está inativo.", StatusCodes.Status400BadRequest);
 }
