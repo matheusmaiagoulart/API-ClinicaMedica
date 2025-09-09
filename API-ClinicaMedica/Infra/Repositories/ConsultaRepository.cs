@@ -15,8 +15,7 @@ public class ConsultaRepository : Repository<Consulta>, IConsultaRepository
         _context = context;
     }
 
-    public async Task<bool> VerificarDisponibilidadeConsulta(int IdMedico, DateTime DataConsulta,
-        Especialidades especialidade)
+    public async Task<bool> VerificarDisponibilidadeConsulta(int IdMedico, DateTime DataConsulta)
     {
         var result = await _context.Consultas
             .Include(c => c.Medico)
@@ -24,8 +23,7 @@ public class ConsultaRepository : Repository<Consulta>, IConsultaRepository
             .Where(c => c.IdMedico == IdMedico
                         && c.DataHoraConsulta.Date == DataConsulta.Date
                         && c.DataHoraConsulta.Hour == DataConsulta.Hour
-                        && c.DataHoraConsulta.Minute == DataConsulta.Minute
-                        && c.Medico.Especialidade == especialidade)
+                        && c.DataHoraConsulta.Minute == DataConsulta.Minute)
             .AnyAsync();
 
         return !result;

@@ -5,7 +5,7 @@ namespace API_ClinicaMedica.Infra.Interfaces;
 
 public interface IConsultaRepository : IRepository<Consulta>
 {
-    Task<bool> VerificarDisponibilidadeConsulta(int IdMedico, DateTime DataConsulta, Especialidades especialidade);
+    Task<bool> VerificarDisponibilidadeConsulta(int IdMedico, DateTime DataConsulta);
     
     Task<Medico?> EscolheMedicoAleatorio(DateTime DataConsulta, Especialidades especialidade);
 
