@@ -8,7 +8,7 @@ public class MedicoErrosResult
         new ("IdJaVinculadoAUsuario", "O Id do usuário já está vinculado a um Médico na base de dados.", StatusCodes.Status400BadRequest);
     
     public static Error MedicoNaoEncontrado() =>
-        new ("MedicoNaoEncontrado", "O Id do Médico não foi encontrado na base de dados.", StatusCodes.Status400BadRequest);
+        new ("MedicoNaoEncontrado", "O Id do Médico não foi encontrado na base de dados.", StatusCodes.Status404NotFound);
     
     public static Error MedicosNaoEncontrados() =>
         new ("MedicosNaoEncontrados", "Não foram encontrados Médicos na base de dados.", StatusCodes.Status400BadRequest);
@@ -24,6 +24,9 @@ public class MedicoErrosResult
     
     public static Error MedicoJaInativo() =>
         new ("MedicoJaInativo", "O Médico já consta inativo e não pode ser desativado.", StatusCodes.Status400BadRequest);
+    
+    public static Error MedicoInativo() =>
+        new ("MedicoInativo", "O Médico está inativo.", StatusCodes.Status400BadRequest);
     
     public static Error CrmNaoLocalizado() =>
         new ("CrmNaoLocalizado", "Não foi encontrado um Médico com este CRM na base.", StatusCodes.Status404NotFound);
