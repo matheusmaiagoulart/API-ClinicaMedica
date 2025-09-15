@@ -30,6 +30,7 @@ appsettings.Development.json
 appsettings.Production.json
 appsettings.Staging.json
 API-ClinicaMedica.sln.DotSettings.user
+appsettings.json
 # Database
 *.db
 *.sqlite
