@@ -1,12 +1,15 @@
 ﻿# Build
-bin/
-obj/
+**/bin/
+**/obj/
 
 # User-specific files
 *.user
 *.suo
 *.userosscache
 *.sln.docstates
+
+# Visual Studio
+.vs/
 
 # Visual Studio Code
 .vscode/
@@ -22,14 +25,14 @@ obj/
 .DS_Store
 Thumbs.db
 
-# Configuration
+# Configuration (keep base appsettings.json, ignore environment-specific)
 appsettings.Development.json
 appsettings.Production.json
 appsettings.Staging.json
 
-# Others
+# Database
 *.db
 *.sqlite
 
-/Migrations
-/appsettings.json
+# Migrations (opcional - depende se você quer versionar)
+**/Migrations/

@@ -8,6 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="12.0.0" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.0" />
+    <PackageReference Include="BCrypt" Version="1.0.0" />
+    <PackageReference Include="FluentValidation" Version="11.11.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.19" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.19" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.19">
@@ -18,9 +22,27 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-    <Folder Include="Infra\" />
-    <Folder Include="Services\" />
+    <Compile Remove="Application\Profiles\MedicoProfiles\**" />
+    <Compile Remove="Application\Profiles\PacienteProfiles\**" />
+    <Compile Remove="Application\Profiles\UsuarioProfiles\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="Application\Profiles\MedicoProfiles\**" />
+    <EmbeddedResource Remove="Application\Profiles\PacienteProfiles\**" />
+    <EmbeddedResource Remove="Application\Profiles\UsuarioProfiles\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Application\Profiles\MedicoProfiles\**" />
+    <Content Remove="Application\Profiles\PacienteProfiles\**" />
+    <Content Remove="Application\Profiles\UsuarioProfiles\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Application\Profiles\MedicoProfiles\**" />
+    <None Remove="Application\Profiles\PacienteProfiles\**" />
+    <None Remove="Application\Profiles\UsuarioProfiles\**" />
   </ItemGroup>
 
 </Project>

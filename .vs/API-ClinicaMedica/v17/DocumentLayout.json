@@ -1,7 +1,36 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\matheus.maia.goulart\\OneDrive - Avanade\\Documentos\\Estudos Geral\\API-ClinicaMedica\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{6C076262-DBB2-485D-B49D-96DB4A0FE96A}|API-ClinicaMedica.Tests\\API-ClinicaMedica.Tests.csproj|c:\\users\\matheus.maia.goulart\\onedrive - avanade\\documentos\\estudos geral\\api-clinicamedica\\api-clinicamedica.tests\\unittest1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6C076262-DBB2-485D-B49D-96DB4A0FE96A}|API-ClinicaMedica.Tests\\API-ClinicaMedica.Tests.csproj|solutionrelative:api-clinicamedica.tests\\unittest1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\matheus.maia.goulart\\OneDrive - Avanade\\Documentos\\Estudos Geral\\API-ClinicaMedica\\API-ClinicaMedica\\Controllers\\UsuarioController\\UsuarioController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:API-ClinicaMedica\\Controllers\\UsuarioController\\UsuarioController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\matheus.maia.goulart\\OneDrive - Avanade\\Documentos\\Estudos Geral\\API-ClinicaMedica\\API-ClinicaMedica\\Infra\\Repositories\\Implementations\\UsuarioRepository\\UsuarioRepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:API-ClinicaMedica\\Infra\\Repositories\\Implementations\\UsuarioRepository\\UsuarioRepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\matheus.maia.goulart\\OneDrive - Avanade\\Documentos\\Estudos Geral\\API-ClinicaMedica\\API-ClinicaMedica\\Application\\Services\\UsuarioService\\Implementations\\UsuarioService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:API-ClinicaMedica\\Application\\Services\\UsuarioService\\Implementations\\UsuarioService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\matheus.maia.goulart\\OneDrive - Avanade\\Documentos\\Estudos Geral\\API-ClinicaMedica\\API-ClinicaMedica\\Application\\Validations\\UsuarioValidationInformacoesBasicas\\Implementation\\ValidacaoEmail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:API-ClinicaMedica\\Application\\Validations\\UsuarioValidationInformacoesBasicas\\Implementation\\ValidacaoEmail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\matheus.maia.goulart\\OneDrive - Avanade\\Documentos\\Estudos Geral\\API-ClinicaMedica\\API-ClinicaMedica\\Application\\Validations\\UsuarioValidationInformacoesBasicas\\Implementation\\ValidacaoTelefone.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:API-ClinicaMedica\\Application\\Validations\\UsuarioValidationInformacoesBasicas\\Implementation\\ValidacaoTelefone.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\matheus.maia.goulart\\OneDrive - Avanade\\Documentos\\Estudos Geral\\API-ClinicaMedica\\API-ClinicaMedica\\Application\\Validations\\UsuarioValidationInformacoesBasicas\\Implementation\\ValidacaoCpf.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:API-ClinicaMedica\\Application\\Validations\\UsuarioValidationInformacoesBasicas\\Implementation\\ValidacaoCpf.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,11 +38,95 @@
       "DocumentGroups": [
         {
           "DockedWidth": 189,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "UnitTest1.cs",
+              "DocumentMoniker": "C:\\Users\\matheus.maia.goulart\\OneDrive - Avanade\\Documentos\\Estudos Geral\\API-ClinicaMedica\\API-ClinicaMedica.Tests\\UnitTest1.cs",
+              "RelativeDocumentMoniker": "API-ClinicaMedica.Tests\\UnitTest1.cs",
+              "ToolTip": "C:\\Users\\matheus.maia.goulart\\OneDrive - Avanade\\Documentos\\Estudos Geral\\API-ClinicaMedica\\API-ClinicaMedica.Tests\\UnitTest1.cs",
+              "RelativeToolTip": "API-ClinicaMedica.Tests\\UnitTest1.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-05T12:32:00.72Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "UsuarioRepository.cs",
+              "DocumentMoniker": "C:\\Users\\matheus.maia.goulart\\OneDrive - Avanade\\Documentos\\Estudos Geral\\API-ClinicaMedica\\API-ClinicaMedica\\Infra\\Repositories\\Implementations\\UsuarioRepository\\UsuarioRepository.cs",
+              "RelativeDocumentMoniker": "API-ClinicaMedica\\Infra\\Repositories\\Implementations\\UsuarioRepository\\UsuarioRepository.cs",
+              "ToolTip": "C:\\Users\\matheus.maia.goulart\\OneDrive - Avanade\\Documentos\\Estudos Geral\\API-ClinicaMedica\\API-ClinicaMedica\\Infra\\Repositories\\Implementations\\UsuarioRepository\\UsuarioRepository.cs",
+              "RelativeToolTip": "API-ClinicaMedica\\Infra\\Repositories\\Implementations\\UsuarioRepository\\UsuarioRepository.cs",
+              "ViewState": "AgIAAB8AAAAAAAAAAAAswC4AAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-28T23:02:28.783Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "UsuarioService.cs",
+              "DocumentMoniker": "C:\\Users\\matheus.maia.goulart\\OneDrive - Avanade\\Documentos\\Estudos Geral\\API-ClinicaMedica\\API-ClinicaMedica\\Application\\Services\\UsuarioService\\Implementations\\UsuarioService.cs",
+              "RelativeDocumentMoniker": "API-ClinicaMedica\\Application\\Services\\UsuarioService\\Implementations\\UsuarioService.cs",
+              "ToolTip": "C:\\Users\\matheus.maia.goulart\\OneDrive - Avanade\\Documentos\\Estudos Geral\\API-ClinicaMedica\\API-ClinicaMedica\\Application\\Services\\UsuarioService\\Implementations\\UsuarioService.cs",
+              "RelativeToolTip": "API-ClinicaMedica\\Application\\Services\\UsuarioService\\Implementations\\UsuarioService.cs",
+              "ViewState": "AgIAABoAAAAAAAAAAAAowDQAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-28T18:37:04.361Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "UsuarioController.cs",
+              "DocumentMoniker": "C:\\Users\\matheus.maia.goulart\\OneDrive - Avanade\\Documentos\\Estudos Geral\\API-ClinicaMedica\\API-ClinicaMedica\\Controllers\\UsuarioController\\UsuarioController.cs",
+              "RelativeDocumentMoniker": "API-ClinicaMedica\\Controllers\\UsuarioController\\UsuarioController.cs",
+              "ToolTip": "C:\\Users\\matheus.maia.goulart\\OneDrive - Avanade\\Documentos\\Estudos Geral\\API-ClinicaMedica\\API-ClinicaMedica\\Controllers\\UsuarioController\\UsuarioController.cs",
+              "RelativeToolTip": "API-ClinicaMedica\\Controllers\\UsuarioController\\UsuarioController.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-28T18:35:33.019Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ValidacaoEmail.cs",
+              "DocumentMoniker": "C:\\Users\\matheus.maia.goulart\\OneDrive - Avanade\\Documentos\\Estudos Geral\\API-ClinicaMedica\\API-ClinicaMedica\\Application\\Validations\\UsuarioValidationInformacoesBasicas\\Implementation\\ValidacaoEmail.cs",
+              "RelativeDocumentMoniker": "API-ClinicaMedica\\Application\\Validations\\UsuarioValidationInformacoesBasicas\\Implementation\\ValidacaoEmail.cs",
+              "ToolTip": "C:\\Users\\matheus.maia.goulart\\OneDrive - Avanade\\Documentos\\Estudos Geral\\API-ClinicaMedica\\API-ClinicaMedica\\Application\\Validations\\UsuarioValidationInformacoesBasicas\\Implementation\\ValidacaoEmail.cs",
+              "RelativeToolTip": "API-ClinicaMedica\\Application\\Validations\\UsuarioValidationInformacoesBasicas\\Implementation\\ValidacaoEmail.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAcwDEAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-28T18:28:26.015Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ValidacaoTelefone.cs",
+              "DocumentMoniker": "C:\\Users\\matheus.maia.goulart\\OneDrive - Avanade\\Documentos\\Estudos Geral\\API-ClinicaMedica\\API-ClinicaMedica\\Application\\Validations\\UsuarioValidationInformacoesBasicas\\Implementation\\ValidacaoTelefone.cs",
+              "RelativeDocumentMoniker": "API-ClinicaMedica\\Application\\Validations\\UsuarioValidationInformacoesBasicas\\Implementation\\ValidacaoTelefone.cs",
+              "ToolTip": "C:\\Users\\matheus.maia.goulart\\OneDrive - Avanade\\Documentos\\Estudos Geral\\API-ClinicaMedica\\API-ClinicaMedica\\Application\\Validations\\UsuarioValidationInformacoesBasicas\\Implementation\\ValidacaoTelefone.cs",
+              "RelativeToolTip": "API-ClinicaMedica\\Application\\Validations\\UsuarioValidationInformacoesBasicas\\Implementation\\ValidacaoTelefone.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAAAcwDUAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-28T18:28:26.033Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ValidacaoCpf.cs",
+              "DocumentMoniker": "C:\\Users\\matheus.maia.goulart\\OneDrive - Avanade\\Documentos\\Estudos Geral\\API-ClinicaMedica\\API-ClinicaMedica\\Application\\Validations\\UsuarioValidationInformacoesBasicas\\Implementation\\ValidacaoCpf.cs",
+              "RelativeDocumentMoniker": "API-ClinicaMedica\\Application\\Validations\\UsuarioValidationInformacoesBasicas\\Implementation\\ValidacaoCpf.cs",
+              "ToolTip": "C:\\Users\\matheus.maia.goulart\\OneDrive - Avanade\\Documentos\\Estudos Geral\\API-ClinicaMedica\\API-ClinicaMedica\\Application\\Validations\\UsuarioValidationInformacoesBasicas\\Implementation\\ValidacaoCpf.cs",
+              "RelativeToolTip": "API-ClinicaMedica\\Application\\Validations\\UsuarioValidationInformacoesBasicas\\Implementation\\ValidacaoCpf.cs",
+              "ViewState": "AgIAABQAAAAAAAAAAAAAADQAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-28T18:27:54.694Z"
             }
           ]
         }
