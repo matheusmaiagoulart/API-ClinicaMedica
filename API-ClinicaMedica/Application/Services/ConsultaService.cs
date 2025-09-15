@@ -35,12 +35,11 @@ public class ConsultaService : IConsultaService
         
         foreach (var index in ValidacoesConsulta)
         {
-            // Validações seguintes
-            var result = index.Validacao(dto);
-            if (result.Result.IsFailure)
+            // Validações seguintes - CORRIGIDO: await no método Validacao
+            var result = await index.Validacao(dto);
+            if (result.IsFailure)
             {
-                var error = result.Result.Error;
-                return Result<Consulta>.Failure(error);
+                return Result<Consulta>.Failure(result.Error);
             }
         }
 
@@ -93,13 +92,7 @@ public class ConsultaService : IConsultaService
     
     public async Task<Result<IEnumerable<ConsultaViewDTO>>> GetConsultasByDateRange(DateTime startDate, DateTime endDate)
     {
-        startDate.Date.AddSeconds(0);
-        startDate.Date.AddMicroseconds(0);
-        startDate.Date.AddMilliseconds(0);
-        
-        endDate.Date.AddSeconds(0);
-        endDate.Date.AddMicroseconds(0);
-        endDate.Date.AddMilliseconds(0);
+        ZerarDateTime(startDate, endDate);
         
         var consultas = await _unitOfWork.Consultas.GetConsultasByDateRange(startDate, endDate);
         if(consultas.IsNullOrEmpty())
@@ -111,13 +104,7 @@ public class ConsultaService : IConsultaService
 
     public async Task<Result<IEnumerable<ConsultaViewDTO>>> GetMedicoConsultasByDateRange(int idMedico, DateTime startDate, DateTime endDate)
     {
-        startDate.Date.AddSeconds(0);
-        startDate.Date.AddMicroseconds(0);
-        startDate.Date.AddMilliseconds(0);
-        
-        endDate.Date.AddSeconds(0);
-        endDate.Date.AddMicroseconds(0);
-        endDate.Date.AddMilliseconds(0);
+        ZerarDateTime(startDate, endDate);
         
         var consultas = await _unitOfWork.Consultas.GetMedicoConsultasByDateRange(idMedico, startDate, endDate);
         if(consultas.IsNullOrEmpty())
@@ -125,5 +112,16 @@ public class ConsultaService : IConsultaService
         
         var consultasMapped = _mapper.Map<IEnumerable<ConsultaViewDTO>>(consultas);
         return Result<IEnumerable<ConsultaViewDTO>>.Success(consultasMapped);
+    }
+    
+    public void ZerarDateTime(DateTime startDate, DateTime endDate)
+    {
+        startDate.Date.AddSeconds(0);
+        startDate.Date.AddMicroseconds(0);
+        startDate.Date.AddMilliseconds(0);
+        
+        endDate.Date.AddSeconds(0);
+        endDate.Date.AddMicroseconds(0);
+        endDate.Date.AddMilliseconds(0);
     }
 }
