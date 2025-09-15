@@ -38,9 +38,13 @@ public class UsuarioService : IUsuarioService
 
 
         Usuario user = _mapper.Map<Usuario>(dto);
-        user.HashSenha(dto.Senha);
+        var criptResult = user.HashSenha(dto.Senha);
+        if (!criptResult)
+        {
+            return Result<Usuario>.Failure(UsuarioErrosResults.ErroAoCriptografarSenha());
+        }
         
-        _unitOfWork.Usuarios.AddAsync(user);
+        await _unitOfWork.Usuarios.AddAsync(user);
         await _unitOfWork.CommitAsync();
         
         return Result<Usuario>.Success(user);
@@ -77,14 +81,18 @@ public class UsuarioService : IUsuarioService
         {
             return Result<UsuarioDTO>.Failure(UsuarioErrosResults.UsuarioNaoEncontrado());
         }
-        _mapper.Map(dto, userExistente);
-        
+       // _mapper.Map(dto, userExistente);
+       userExistente  = _mapper.Map<UpdateUsuarioDTO, Usuario>(dto);
         var validation = _mapper.Map<UniqueFieldsValidationDTO>(userExistente);
         foreach (var index in validacaoInformacoesBasicas)
             {
-                    index.Validacao(validation);
+                    var result = await index.Validacao(validation);
+                    if (result.IsFailure)
+                    {
+                        return Result<UsuarioDTO>.Failure(result.Error);
+                    }
             }
-        
+        await _unitOfWork.Usuarios.UpdateAsync(userExistente);
         await _unitOfWork.CommitAsync();
         
         var userDTO = _mapper.Map<UsuarioDTO>(userExistente);
