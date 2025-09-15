@@ -20,11 +20,11 @@ public class Paciente
         
     }
     
-    public Paciente(int idPaciente, bool ativo, bool pcd, List<MedicamentoControlado> medicamentosControlados)
+    public Paciente(int idPaciente, bool pcd, List<MedicamentoControlado> medicamentosControlados)
     {
         IdPaciente = idPaciente;
         Pcd = pcd;
-        Ativo = ativo;
+        Ativo = true;
         MedicamentosControlados = medicamentosControlados ?? new List<MedicamentoControlado>();
     }
 
@@ -36,9 +36,13 @@ public class Paciente
     {
         Ativo = true;
     }
-    public void Desativar()
+    public bool Desativar()
     {
+        if(!Ativo) 
+            return false;
+        
         Ativo = false;
+        return true;
     }
     
     
