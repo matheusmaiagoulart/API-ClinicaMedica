@@ -15,4 +15,7 @@ public class PacienteErrorsResult
     
     public static Error PacienteInativo() =>
         new("PacienteInativo", "O paciente está inativo.", StatusCodes.Status400BadRequest);
+    
+    public static Error PacientejaInativo() =>
+        new("PacientejaInativo", "O paciente já está inativo.", StatusCodes.Status400BadRequest);
 }
