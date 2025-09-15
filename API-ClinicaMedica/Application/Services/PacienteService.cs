@@ -33,8 +33,6 @@ public class PacienteService : IPacienteService
         
         //Criação do paciente e vinculação com o Usuario passado
         var newPaciente = _mapper.Map<Paciente>(dto);
-        newPaciente.setPacienteId(dto.IdUsuario);
-        newPaciente.setAtivoTrue();
         await _uow.Pacientes.AddAsync(newPaciente);
         await _uow.CommitAsync();
         return Result<Paciente>.Success(newPaciente);
@@ -71,7 +69,10 @@ public class PacienteService : IPacienteService
         if(paciente == null)
             return Result<Paciente>.Failure(PacienteErrorsResult.PacienteNaoEncontrado());
         
-        paciente.Desativar();
+        var result = paciente.Desativar();
+        if(!result)
+            return Result.Failure(PacienteErrorsResult.PacientejaInativo());
+        
         await _uow.CommitAsync();
         return Result.Success();
         
@@ -82,11 +83,14 @@ public class PacienteService : IPacienteService
         var paciente = await _uow.Pacientes.GetPacienteById(id);
         if(paciente == null)
             return Result<PacienteDTO>.Failure(PacienteErrorsResult.PacienteNaoEncontrado());
+
+        if (!paciente.Ativo)
+        return Result<PacienteDTO>.Failure(PacienteErrorsResult.PacienteInativo());
         
-        var pcienteAtualizado = _mapper.Map(dto, paciente);
+        var pacienteAtualizado = _mapper.Map(dto, paciente);
         
         await _uow.CommitAsync();
-        var pacienteDto = _mapper.Map<PacienteDTO>(pcienteAtualizado);
+        var pacienteDto = _mapper.Map<PacienteDTO>(pacienteAtualizado);
         return Result<PacienteDTO>.Success(pacienteDto); 
     }
 }
