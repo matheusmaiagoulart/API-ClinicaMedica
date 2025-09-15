@@ -7,7 +7,7 @@ public class PacienteDTO
 {
     public int IdPaciente { get; set; }
     public Usuario Usuario { get; set; }
-    public bool Pcd { get; private set; }
-    public bool Ativo { get; private set; }
-    public IReadOnlyCollection<MedicamentoControlado> MedicamentosControlados { get; private set; }
+    public bool Pcd { get; set; }
+    public bool Ativo { get; set; }
+    public IReadOnlyCollection<MedicamentoControlado> MedicamentosControlados { get; set; }
 }
