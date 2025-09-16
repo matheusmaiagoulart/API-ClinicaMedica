@@ -35,7 +35,6 @@ public class ConsultaService : IConsultaService
         
         foreach (var index in ValidacoesConsulta)
         {
-            // Validações seguintes - CORRIGIDO: await no método Validacao
             var result = await index.Validacao(dto);
             if (result.IsFailure)
             {
