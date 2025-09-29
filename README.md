@@ -1,4 +1,4 @@
-﻿# API-ClinicaMedica
+# API-ClinicaMedica
 
 Esta é uma API para gerenciamento de uma clínica médica, desenvolvida em .NET.
 
@@ -6,6 +6,29 @@ Esta é uma API para gerenciamento de uma clínica médica, desenvolvida em .NET
 - Cadastro e gerenciamento de pacientes
 - Cadastro e gerenciamento de médicos
 - Agendamento de consulta e cancelamento de consultas
+
+## ⚖️ Regras de Negócio para Agendamento de Consultas
+
+### 📋 Validações Obrigatórias
+```
+✅ Paciente deve estar cadastrado e ativo no sistema
+✅ Médico deve estar cadastrado e com CRM válido
+✅ Data/hora da consulta deve ser futura (não pode agendar no passado)
+✅ Horário deve estar dentro do funcionamento da clínica (08h às 18h)
+✅ Consulta só pode ser agendada de segunda a sexta-feira
+✅ Intervalos de 30 minutos entre consultas do mesmo médico
+✅ Se o médico não for informado no momento de cadastro da consulta, o sistema busca um de mesma especialidade disponível na Data e Hora desejada.
+✅ Especialidade deve ser válida
+```
+
+### 🚫 Restrições de Agendamento
+```
+❌ Médico não pode ter consultas sobrepostas
+❌ Não é permitido agendar em finais de semana
+❌ Agendamento deve ser feito com pelo menos 1 hora de antecedência
+❌ Consultas não podem ter horário quebrado. Ex: 08:02
+❌ Validação de dados de entrada
+```
 
 ## 🏛️ Arquitetura e Padrões
 
@@ -20,6 +43,7 @@ Modelagem baseada no domínio da clínica médica com entidades e regras de neg�
 - **Unit of Work**: Controle de transações
 - **Dependency Injection**: Inversão de dependências
 - **Result Pattern**: Padronização de erros
+- **Middleware**: Tratamento de exceções globais
 
 ### Clean Architecture
 Estrutura em camadas com separação clara de responsabilidades, garantindo manutenibilidade e testabilidade.
@@ -36,7 +60,7 @@ Estrutura em camadas com separação clara de responsabilidades, garantindo manu
 ├── Infra/              # Camada de infraestrutura
 │   ├── Repositories/   # Implementação dos repositórios
 │   └── Interfaces/     # Contratos de repositórios
-└── Tests/              # Testes unitários e de integração
+└── Tests/              # Testes unitários
 ```
 
 ## Estrutura do Projeto
@@ -48,24 +72,30 @@ Estrutura em camadas com separação clara de responsabilidades, garantindo manu
 - **Migrations/**: Migrações do banco de dados
 - **Tests/**: Testes Unitários
 
-## Como executar
-1. Instale o .NET SDK (versão recomendada: 7.0 ou superior)
-2. Restaure os pacotes:
+## 🚀 Como executar
+1. **Pré-requisitos**: .NET SDK 8.0 ou superior
+2. **Clone o repositório**:
+   ```bash
+   git clone https://github.com/matheusmaiagoulart/API-ClinicaMedica.git
+   cd API-ClinicaMedica
+   ```
+3. **Restaure os pacotes**:
    ```bash
    dotnet restore
    ```
-3. Execute as migrações:
+4. **Configure a string de conexão** em `appsettings.json`
+5. **Execute as migrações**:
    ```bash
    dotnet ef database update
    ```
-4. Inicie a aplicação:
+6. **Inicie a aplicação**:
    ```bash
    dotnet run --project API-ClinicaMedica/API-ClinicaMedica.csproj
    ```
 
-## Testes
-Para rodar os testes:
+## 🧪 Testes
 ```bash
+# Executar todos os testes
 dotnet test
 ```
 
