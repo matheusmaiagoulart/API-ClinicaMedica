@@ -469,8 +469,8 @@ public class ConsultaService_Test : IClassFixture<ConsultaServiceFixture>
 
     #region Debug Tests
 
-    [Fact(DisplayName = "DEBUG - Verificar horários válidos")]
-    public void Debug_VerificarHorariosValidos()
+    [Fact(DisplayName = "VerificarHorariosValidos deve retornar SUCESSO quando horário estiver na lista válida")]
+    public void VerificarHorariosValidos_DeveRetornarSucesso_QuandoHorarioEstiverNaListaValida()
     {
         // Arrange
         var horarios = API_ClinicaMedica.Application.Constants.HorariosConsultas.Horarios();
@@ -486,8 +486,8 @@ public class ConsultaService_Test : IClassFixture<ConsultaServiceFixture>
         Assert.Contains(horasTeste, horarios);
     }
 
-    [Fact(DisplayName = "DEBUG - Teste simples de criação de consulta")]
-    public void Debug_TesteSimplesCriacaoConsulta()
+    [Fact(DisplayName = "CriarConsulta deve retornar SUCESSO quando dados forem válidos para criação simples")]
+    public void CriarConsulta_DeveRetornarSucesso_QuandoDadosForemValidosParaCriacaoSimples()
     {
         // Arrange
         var dto = _fixture.CreateConsultaDTOValid();
@@ -506,8 +506,8 @@ public class ConsultaService_Test : IClassFixture<ConsultaServiceFixture>
         Assert.Equal(dto.IdMedico, consulta.IdMedico);
     }
 
-    [Fact(DisplayName = "DEBUG - Teste mapper mock")]
-    public void Debug_TesteMapperMock()
+    [Fact(DisplayName = "MapperMock deve retornar SUCESSO quando mapeamento for configurado corretamente")]
+    public void MapperMock_DeveRetornarSucesso_QuandoMapeamentoForConfiguradoCorretamente()
     {
         _fixture.MockMapper.Reset();
         
