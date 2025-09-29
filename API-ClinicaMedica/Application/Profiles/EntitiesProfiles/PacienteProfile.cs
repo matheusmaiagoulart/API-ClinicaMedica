@@ -13,8 +13,6 @@ public class PacienteProfile : Profile
         
         CreateMap<Paciente, PacienteDTO>();
 
-        CreateMap<IEnumerable<Paciente>, IEnumerable<PacienteDTO>>();
-
         CreateMap<UpdatePacienteDTO, Paciente>();
     }
     
